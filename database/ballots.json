@@ -1,0 +1,36 @@
+[
+    {
+        "electionTitle": "test2",
+        "createBy": 2,
+        "groupName": "test",
+        "questions": [
+            {
+                "title": "huy",
+                "choices": [
+                    "1",
+                    "2"
+                ]
+            },
+            {
+                "title": "my",
+                "choices": [
+                    "1",
+                    "2"
+                ]
+            }
+        ]
+    },
+    {
+        "electionTitle": "Con",
+        "createBy": 2,
+        "groupName": "cac",
+        "questions": [
+            {
+                "title": "conc ac",
+                "choices": [
+                    "cac"
+                ]
+            }
+        ]
+    }
+]

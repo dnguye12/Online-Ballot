@@ -20,6 +20,9 @@ if (!isset($_SESSION['loggedin'])) {
 			<h2>Home Page</h2>
 			<p>Welcome back, <?=htmlspecialchars($_SESSION['name'], ENT_QUOTES)?>!</p>
 		</div>
+		<div class="action">
+			<a href="create_ballot.php">Create Ballot</a>
+		</div>
 	</body>
 </html>
 <?php include 'utils/foot.php' ?>

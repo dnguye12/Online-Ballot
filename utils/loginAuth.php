@@ -24,7 +24,7 @@ if ($foundAccount !== null) {
         session_regenerate_id();
         $_SESSION['loggedin'] = TRUE;
         $_SESSION['name'] = $_POST['username'];
-        $_SESSION['id'] = $id;
+        $_SESSION['id'] = $foundAccount['id'];
         header('Location: ../home.php');
         exit;
     }else {
