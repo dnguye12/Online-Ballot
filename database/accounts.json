@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "username": "dnguye12",
+        "password": "$2y$10$PMKxiRHu5R9X3EUW0VLIm.XadAYwZiwGa0JlNWSvCL5AK7oIdBhd.",
+        "email": "huy@mail.com"
+    },
+    {
+        "id": 2,
+        "username": "dnguye51",
+        "password": "$2y$10$W3mbIQEDwUSifvKiLQJmhecD3b.H2AKoQG7x29CM6GvXfZdNAF3O.",
+        "email": "huy@mail.com"
+    }
+]
