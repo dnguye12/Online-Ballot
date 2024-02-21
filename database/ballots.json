@@ -1,0 +1,26 @@
+[
+    {
+        "electionTitle": "tst3",
+        "createBy": 1,
+        "groupName": "testst",
+        "questions": [
+            {
+                "title": "huy",
+                "choices": [
+                    "cac",
+                    "1"
+                ]
+            },
+            {
+                "title": "my",
+                "choices": [
+                    "2"
+                ]
+            }
+        ],
+        "voterList": [
+            "duchuyng051@gmail.com",
+            "duchuyng051@gmail.com"
+        ]
+    }
+]
