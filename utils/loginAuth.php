@@ -1,4 +1,3 @@
-<?php include './head.php'; ?>
 <?php include 'databaseHandler.php' ?>
 <?php
 session_start();
@@ -19,20 +18,20 @@ foreach ($accounts as $account) {
 }
 
 if ($foundAccount !== null) {
-    echo "test";
     if (password_verify($_POST['password'], $foundAccount['password'])) {
         session_regenerate_id();
         $_SESSION['loggedin'] = TRUE;
         $_SESSION['name'] = $foundAccount['username'];
         $_SESSION['id'] = $foundAccount['id'];
         $_SESSION['email'] = $_POST['email'];
-        header('Location: ../home.php');
+        echo "success";
         exit;
     }else {
         echo 'Incorrect email and/or password!';
+        echo '<br><a href="login.php">Go Back</a>';
     }
 }else {
     echo 'Incorrect email and/or password!';
+    echo '<br><a href="login.php">Go Back</a>';
 }
 ?>
-<?php include './foot.php' ?>

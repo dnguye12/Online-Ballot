@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'utils/head.php'; ?>
-<?php include 'databaseHandler.php'?>
+<?php include 'utils/databaseHandler.php'?>
 <?php
 session_start();
 if (!isset($_SESSION['loggedin'])) {

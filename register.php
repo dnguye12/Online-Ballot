@@ -5,7 +5,7 @@
 <body>
 	<div class="register">
 		<h1>Register</h1>
-		<form action="utils/registerAuth.php" method="post" autocomplete="off">
+		<form id="registrationForm" autocomplete="off">
 			<label for="username">
 				<i class="fas fa-user"></i>
 			</label>
@@ -21,7 +21,23 @@
 			<input type="submit" value="Register">
 		</form>
 	</div>
+	<div id="registrationMessage"></div>
 </body>
 
 </html>
 <?php include 'utils/foot.php' ?>
+<script>
+	$(document).ready(function() {
+		$('#registrationForm').submit(function(e) {
+			e.preventDefault();
+			$.ajax({
+				type: 'POST',
+				url: 'utils/registerAuth.php',
+				data: $(this).serialize(),
+			}).done(function(e) {
+				$('.register').hide();
+				$('#registrationMessage').html(e);
+			})
+		})
+	})
+</script>

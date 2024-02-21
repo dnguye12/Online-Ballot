@@ -4,5 +4,11 @@
         "username": "dnguye12",
         "password": "$2y$10$LYqUuP7i.g6GsUGY7UICxe\/LCUMSJpNOe7WLByPzCbyENCVGm88kW",
         "email": "huy@mail.com"
+    },
+    {
+        "id": 2,
+        "username": "cac",
+        "password": "$2y$10$tOyAarLYaHxJuVWQmpKxkeJWOOf8vdj8wusCJh2ltRQ89tdqwqGzW",
+        "email": "cac@mail.com"
     }
 ]
