@@ -47,9 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 "title" => $questionTitle,
                 "choices" => $choices
             ];
-        }else if(preg_match('/voter(\d+)/', $key, $matches)) {
+        } else if (preg_match('/voter(\d+)/', $key, $matches)) {
             $voterEmail = trim($value);
-            if(filter_var($voterEmail, FILTER_VALIDATE_EMAIL)) {
+            if (filter_var($voterEmail, FILTER_VALIDATE_EMAIL)) {
                 $validatedVoterEmails[] = $voterEmail;
             }
         }

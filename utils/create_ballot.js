@@ -1,6 +1,6 @@
-$('#createForm').on('keyup keypress', function(e) {
+$('#createForm').on('keyup keypress', function (e) {
     let keyCode = e.keyCode || e.which;
-    if(keyCode === 13) {
+    if (keyCode === 13) {
         e.preventDefault();
         return false;
     }
@@ -54,7 +54,7 @@ function addVoter() {
 
 function deleteElement(id) {
     const element = document.getElementById(id);
-    if(element) {
+    if (element) {
         element.parentNode.removeChild(element);
     }
 }
