@@ -39,6 +39,10 @@ foreach ($accounts as $account) {
         echo 'Username exists, please choose another!';
         echo '<br><a href="../register.php">Go Back</a>';
         exit;
+    }else if($account['email'] == $_POST['email']) {
+        echo 'Email exists, please choose another!';
+        echo '<br><a href="../register.php">Go Back</a>';
+        exit;
     }
 }
 

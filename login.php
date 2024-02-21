@@ -6,10 +6,10 @@
 	<div class="login">
 		<h1>Login</h1>
 		<form action="utils/loginAuth.php" method="post">
-			<label for="username">
+			<label for="email">
 				<i class="fas fa-user"></i>
 			</label>
-			<input type="text" name="username" placeholder="Username" id="username" required>
+			<input type="email" name="email" placeholder="Your Email" id="email" required>
 			<label for="password">
 				<i class="fas fa-lock"></i>
 			</label>
