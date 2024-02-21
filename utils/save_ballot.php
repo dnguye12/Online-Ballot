@@ -17,9 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "electionTitle" => $electionTitle,
         "createBy" => $_SESSION['id'],
         "groupName" => $groupName,
-        "questions" => []
+        "questions" => [],
+        "voterList" => []
     ];
-
+    $validatedVoterEmails = [];
     // Iterate over $_POST to find questions and choices
     foreach ($_POST as $key => $value) {
         if (preg_match('/question(\d+)Title$/', $key, $matches)) {
@@ -46,8 +47,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 "title" => $questionTitle,
                 "choices" => $choices
             ];
+        }else if(preg_match('/voter(\d+)/', $key, $matches)) {
+            $voterEmail = trim($value);
+            if(filter_var($voterEmail, FILTER_VALIDATE_EMAIL)) {
+                $validatedVoterEmails[] = $voterEmail;
+            }
         }
     }
+    $newBallotData['voterList'] = $validatedVoterEmails;
+    print_r($newBallotData);
 
     // Append new ballot data to existing data
     $existingData[] = $newBallotData; // Append the new ballot to the list

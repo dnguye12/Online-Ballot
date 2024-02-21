@@ -1,3 +1,11 @@
+$('#createForm').on('keyup keypress', function(e) {
+    let keyCode = e.keyCode || e.which;
+    if(keyCode === 13) {
+        e.preventDefault();
+        return false;
+    }
+});
+
 let questionCount = 0;
 
 function addQuestion() {
@@ -25,4 +33,17 @@ function addChoice(questionNumber) {
     choiceInput.id = `question${questionNumber}Choice${choiceCount}`;
     choiceInput.name = `question${questionNumber}Choice${choiceCount}`;
     choicesContainer.appendChild(choiceInput);
+}
+
+let voterCount = 0;
+function addVoter() {
+    voterCount++;;
+    const votersContainer = document.getElementById('votersContainer');
+    const voterDiv = document.createElement('div');
+    voterDiv.id = 'voter' + voterCount;
+    voterDiv.innerHTML = `
+    <label for="voter${voterCount}">Email ${voterCount}:</label>
+    <input type="text" id="voter${voterCount}" name="voter${voterCount}" required><br>
+    `;
+    votersContainer.appendChild(voterDiv);
 }

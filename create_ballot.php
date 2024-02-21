@@ -23,6 +23,11 @@ if (!isset($_SESSION['loggedin'])) {
 
         <button type="button" onclick="addQuestion()">Add Question</button><br>
 
+        <div id="votersContainer">
+
+        </div>
+        <button type="button" onclick="addVoter()">Add Voter Email</button>
+
         <button type="submit" onclick="submitForm()">Submit</button>
         <button type="button" onclick="window.location.href='home.php'">Cancel</button>
     </form>
