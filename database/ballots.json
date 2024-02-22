@@ -5,22 +5,24 @@
         "groupName": "testst",
         "questions": [
             {
-                "title": "huy",
+                "title": "q1",
                 "choices": [
-                    "cac",
-                    "1"
+                    "c1",
+                    "c2",
+                    "c3"
                 ]
             },
             {
-                "title": "my",
+                "title": "q2",
                 "choices": [
-                    "2"
+                    "c1",
+                    "c2"
                 ]
             }
         ],
         "voterList": [
-            "duchuyng051@gmail.com",
-            "duchuyng051@gmail.com"
+            "1@mail.com",
+            "2@mail.com"
         ]
     }
 ]

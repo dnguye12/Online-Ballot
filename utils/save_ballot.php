@@ -55,7 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
     $newBallotData['voterList'] = $validatedVoterEmails;
-    print_r($newBallotData);
 
     // Append new ballot data to existing data
     $existingData[] = $newBallotData; // Append the new ballot to the list
@@ -64,7 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     saveDataToFile($filePath, $existingData);
 
     // Redirect to home.php
-    header('Location: ../home.php');
+    //header('Location: ../home.php');
+    echo $electionTitle .  ' have been successfully created!';
+    echo '<br><a href="home.php">Go back to Home</a>';
     exit;
 }
 ?>
