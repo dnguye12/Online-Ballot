@@ -12,6 +12,33 @@ if (!isset($_SESSION['loggedin'])) {
 $filePath = '../../database/ballots.json';
 $ballots = loadDataFromFile($filePath);
 
+$organize = array();
+$voter = array();
+
+foreach($ballots as $ballot) {
+	if($ballot['createBy'] == $_SESSION['id']) {
+		$organize[] = $ballot;
+	}
+	foreach($ballot['voterList'] as $key => $value) {
+		if($key == $_SESSION['email']) {
+			$voter[] = $ballot;
+		}
+	}
+}
+
+usort ($organize, function($a, $b) {
+	$statusOrder = ['Running' => 1, 'Not started' => 2, 'Other' => 3];
+
+	$statusA = $statusOrder[$a['status']] ?? $statusOrder['Other'];
+    $statusB = $statusOrder[$b['status']] ?? $statusOrder['Other'];
+
+	if ($statusA !== $statusB) {
+        return $statusA <=> $statusB;
+    }
+
+	return $a['startDate'] <=> $b['startDate'];
+})
+
 ?>
 
 <body class="loggedin">
@@ -30,7 +57,12 @@ $ballots = loadDataFromFile($filePath);
 		<a href="../create_ballot/create_ballot.php">Create Ballot</a>
 	</div>
 	<div class="organize">
-
+		<?php 
+		require_once './components/organize.php';
+		foreach ($organize as $ballot) {
+			echo OrganizeBallot($ballot);
+		}
+		?>
 	</div>
 </body>
 

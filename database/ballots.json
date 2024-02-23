@@ -1,8 +1,11 @@
 [
     {
-        "electionTitle": "tst3",
+        "electionTitle": "test1",
         "createBy": 1,
-        "groupName": "testst",
+        "groupName": "test group",
+        "startDate": "2024-02-24 16:05:00",
+        "endDate": "2024-03-02 16:05:00",
+        "status": "Not started",
         "questions": [
             {
                 "title": "q1",
@@ -20,36 +23,18 @@
                 ]
             }
         ],
-        "voterList": [
-            "1@mail.com",
-            "2@mail.com"
-        ]
+        "voterList": {
+            "huy@mail.com": 1,
+            "my@mail.com": 1
+        }
     },
     {
-        "electionTitle": "tst3",
+        "electionTitle": "test1",
         "createBy": 1,
-        "groupName": "testst",
-        "questions": [
-            {
-                "title": "huy",
-                "choices": [
-                    "cac",
-                    "1"
-                ]
-            },
-            {
-                "title": "my",
-                "choices": [
-                    "2"
-                ]
-            }
-        ],
-        "voterList": []
-    },
-    {
-        "electionTitle": "tst3",
-        "createBy": 1,
-        "groupName": "testst",
+        "groupName": "test group",
+        "startDate": "2024-02-23 16:05:00",
+        "endDate": "2024-03-01 16:05:00",
+        "status": "Running",
         "questions": [
             {
                 "title": "q1",
@@ -57,10 +42,47 @@
                     "c1",
                     "c2"
                 ]
+            },
+            {
+                "title": "c3",
+                "choices": [
+                    "q2"
+                ]
             }
         ],
-        "voterList": [
-            "1@mail.com"
-        ]
+        "voterList": {
+            "huy@mail.com": 1
+        }
+    },
+    {
+        "electionTitle": "tst74775",
+        "createBy": 1,
+        "groupName": "testst",
+        "startDate": "2024-02-01 16:30:00",
+        "endDate": "2024-02-08 16:30:00",
+        "status": "Closed",
+        "questions": [
+            {
+                "title": "q1",
+                "choices": [
+                    "c1"
+                ]
+            },
+            {
+                "title": "c2",
+                "choices": [
+                    "c3"
+                ]
+            },
+            {
+                "title": "q3",
+                "choices": [
+                    "c2"
+                ]
+            }
+        ],
+        "voterList": {
+            "my@mail.com": 1
+        }
     }
 ]

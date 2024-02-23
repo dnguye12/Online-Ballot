@@ -17,6 +17,12 @@ if (!isset($_SESSION['loggedin'])) {
         <label for="groupName">Name of Group / Organization (Optional):</label>
         <input type="text" id="groupName" name="groupName"><br>
 
+        <label for="startDate">Start of the Election:</label>
+        <input type="datetime-local" id="startDate" name="startDate"><br>
+
+        <label for="endDate">End of the Election:</label>
+        <input type="datetime-local" id="endDate" name="endDate"><br>
+
         <div id="questionsContainer">
             <!-- Questions will be added here dynamically -->
         </div>
@@ -37,21 +43,6 @@ if (!isset($_SESSION['loggedin'])) {
 </html>
 <?php include '../../utils/foot.php' ?>
 <script>
-    $(document).ready(function() {
-        $('#createForm').submit(function(e) {
-            e.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: 'utils/save_ballot.php',
-                data: $(this).serialize(),
-            }).done(function(e) {
-                $('#createForm').hide();
-                $('#createFormMessage').html(e);
-
-            })
-        })
-    })
-
     $('#createForm').on('keyup keypress', function(e) {
         let keyCode = e.keyCode || e.which;
         if (keyCode === 13) {
@@ -59,6 +50,28 @@ if (!isset($_SESSION['loggedin'])) {
             return false;
         }
     });
+
+
+
+    $(document).ready(function() {
+        $('#createForm').submit(function(e) {
+            e.preventDefault();
+            var startDate = new Date($('#startDate').val());
+            var endDate = new Date($('#endDate').val());
+            if (endDate <= startDate) {
+                alert('The end date must be after the start date.');
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: 'utils/save_ballot.php',
+                    data: $(this).serialize(),
+                }).done(function(e) {
+                    $('#createForm').hide();
+                    $('#createFormMessage').html(e);
+                })
+            }
+        })
+    })
 
     let questionCount = 0;
 

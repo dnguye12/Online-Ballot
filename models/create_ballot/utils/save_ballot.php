@@ -10,6 +10,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $electionTitle = $_POST['electionTitle'] ?? '';
     $groupName = $_POST['groupName'] ?? '';
 
+    $startDate = new DateTime($_POST['startDate']);
+    $endDate = new DateTime($_POST['endDate']);
+    $nowDate = new DateTime();
+    $status = "Running";
+    if($nowDate  < $startDate) {
+        $status = "Not started";
+    }else if ($nowDate > $endDate) {
+        $status = "Closed";
+    }
+
+    $startDateFormatted = $startDate->format('Y-m-d H:i:s');
+    $endDateFormatted = $endDate->format('Y-m-d H:i:s');
+
     $filePath = '../../../database/ballots.json';
     $existingData = loadDataFromFile($filePath);
 
@@ -17,6 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "electionTitle" => $electionTitle,
         "createBy" => $_SESSION['id'],
         "groupName" => $groupName,
+        "startDate" => $startDateFormatted,
+        "endDate" => $endDateFormatted,
+        "status" => $status,
         "questions" => [],
         "voterList" => []
     ];
@@ -50,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else if (preg_match('/voter(\d+)/', $key, $matches)) {
             $voterEmail = trim($value);
             if (filter_var($voterEmail, FILTER_VALIDATE_EMAIL)) {
-                $validatedVoterEmails[] = $voterEmail;
+                $validatedVoterEmails[$voterEmail] = 1;
             }
         }
     }
