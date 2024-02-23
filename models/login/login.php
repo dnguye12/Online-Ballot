@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'utils/head.php'; ?>
+<?php include '../../utils/head.php'; ?>
 
 <body>
 	<div class="login">
@@ -21,7 +21,7 @@
 </body>
 
 </html>
-<?php include 'utils/foot.php' ?>
+<?php include '../../utils/foot.php' ?>
 <script>
 	$(document).ready(function() {
 		$('#loginForm').submit(function(e) {
@@ -32,7 +32,7 @@
 				data: $(this).serialize(),
 			}).done(function(e) {
 				if(e === 'success') {
-					window.location.href = './home.php';
+					window.location.href = '../home/home.php';
 				}else {
 					$('.login').hide();
 					$('#loginMessage').html(e);

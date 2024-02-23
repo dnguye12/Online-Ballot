@@ -10,5 +10,23 @@
         "username": "cac",
         "password": "$2y$10$tOyAarLYaHxJuVWQmpKxkeJWOOf8vdj8wusCJh2ltRQ89tdqwqGzW",
         "email": "cac@mail.com"
+    },
+    {
+        "id": 3,
+        "username": "mymy",
+        "password": "$2y$10$XqfVFfnGUPw71VhHqsGuweypLq0jLJmjJzhIV9371nK7dhOXh7oeG",
+        "email": "my@mail.com"
+    },
+    {
+        "id": 4,
+        "username": "huy50",
+        "password": "$2y$10$Msu8F.UaUvvICkzuBQSqeO0Ds0Sm2r7GiCE19Tz\/llRHHmFP4KIF6",
+        "email": "huy50@mail.com"
+    },
+    {
+        "id": 5,
+        "username": "Notch",
+        "password": "$2y$10$hB28x5Vcohy7AHXDdaNbIOO9NKzzRMbW5Hc8LcaKPivd3pBxowHjW",
+        "email": "notch@mail.com"
     }
 ]

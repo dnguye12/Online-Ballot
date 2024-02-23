@@ -1,8 +1,8 @@
-<?php include 'databaseHandler.php' ?>
+<?php include '../../../utils/databaseHandler.php' ?>
 <?php
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-    header('Location: index.html');
+    header('Location: ../../../index.php');
     exit;
 }
 
@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $electionTitle = $_POST['electionTitle'] ?? '';
     $groupName = $_POST['groupName'] ?? '';
 
-    $filePath = '../database/ballots.json';
+    $filePath = '../../../database/ballots.json';
     $existingData = loadDataFromFile($filePath);
 
     $newBallotData = [
@@ -62,10 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Encode to JSON and save
     saveDataToFile($filePath, $existingData);
 
-    // Redirect to home.php
-    //header('Location: ../home.php');
     echo $electionTitle .  ' have been successfully created!';
-    echo '<br><a href="home.php">Go back to Home</a>';
+    echo '<br><a href="../home/home.php">Go back to Home</a>';
     exit;
 }
 ?>

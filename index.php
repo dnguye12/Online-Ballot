@@ -14,10 +14,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="login.php">Login</a>
+                            <a class="nav-link" aria-current="page" href="models/login/login.php">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="register.php">Signup</a>
+                            <a class="nav-link" aria-current="page" href="models/register/register.php">Signup</a>
                         </li>
                     </ul>
                 </div>

@@ -1,8 +1,8 @@
-<?php include 'databaseHandler.php' ?>
+<?php include '../../../utils/databaseHandler.php' ?>
 <?php
 session_start();
 
-$jsonFilePath = '../database/accounts.json';
+$jsonFilePath = '../../../database/accounts.json';
 
 if (!isset($_POST['email'], $_POST['password'])) {
     exit('Please fill both the email and password fields!');

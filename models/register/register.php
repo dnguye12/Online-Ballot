@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'utils/head.php'; ?>
+<?php include '../../utils/head.php'; ?>
 
 <body>
 	<div class="register">
@@ -25,7 +25,7 @@
 </body>
 
 </html>
-<?php include 'utils/foot.php' ?>
+<?php include '../../utils/foot.php' ?>
 <script>
 	$(document).ready(function() {
 		$('#registrationForm').submit(function(e) {

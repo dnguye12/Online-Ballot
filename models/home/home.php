@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'utils/head.php'; ?>
-<?php include 'utils/databaseHandler.php'?>
+<?php include '../../utils/head.php'; ?>
+<?php include '../../utils/databaseHandler.php'?>
 <?php
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: index.php');
+	header('Location: ../../index.php');
 	exit;
 }
 
-$filePath = '/database/ballots.json';
+$filePath = '../../database/ballots.json';
 $ballots = loadDataFromFile($filePath);
 
 ?>
@@ -27,7 +27,7 @@ $ballots = loadDataFromFile($filePath);
 		<p>Welcome back, <?= htmlspecialchars($_SESSION['name'], ENT_QUOTES) ?>!</p>
 	</div>
 	<div class="action">
-		<a href="create_ballot.php">Create Ballot</a>
+		<a href="../create_ballot/create_ballot.php">Create Ballot</a>
 	</div>
 	<div class="organize">
 
@@ -35,4 +35,4 @@ $ballots = loadDataFromFile($filePath);
 </body>
 
 </html>
-<?php include 'utils/foot.php' ?>
+<?php include '../../utils/foot.php' ?>
