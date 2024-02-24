@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include '../../utils/head.php'; ?>
+
+<head>
+	<?php include '../../utils/head.php'; ?>
+</head>
 
 <body>
 	<div class="login">
@@ -31,9 +34,9 @@
 				url: 'utils/loginAuth.php',
 				data: $(this).serialize(),
 			}).done(function(e) {
-				if(e === 'success') {
+				if (e === 'success') {
 					window.location.href = '../home/home.php';
-				}else {
+				} else {
 					$('.login').hide();
 					$('#loginMessage').html(e);
 				}

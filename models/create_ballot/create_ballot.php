@@ -7,7 +7,9 @@ if (!isset($_SESSION['loggedin'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include '../../utils/head.php'; ?>
+<head>
+    <?php include '../../utils/head.php'; ?>
+</head>
 
 <body>
     <form id="createForm">
@@ -58,7 +60,7 @@ if (!isset($_SESSION['loggedin'])) {
             e.preventDefault();
             var startDate = new Date($('#startDate').val());
             var endDate = new Date($('#endDate').val());
-            if (endDate <= startDate) {
+            if (endDate < startDate) {
                 alert('The end date must be after the start date.');
             } else {
                 $.ajax({

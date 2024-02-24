@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'utils/head.php'; ?>
+
+<head>
+    <?php include 'utils/head.php'; ?>
+</head>
+
 
 <body>
 
@@ -25,6 +29,7 @@
         </nav>
     </header>
 </body>
+
 </html>
 
 <?php include 'utils/foot.php' ?>

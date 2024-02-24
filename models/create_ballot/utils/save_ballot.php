@@ -7,6 +7,7 @@ if (!isset($_SESSION['loggedin'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $electionId = uniqid("election");
     $electionTitle = $_POST['electionTitle'] ?? '';
     $groupName = $_POST['groupName'] ?? '';
 
@@ -27,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $existingData = loadDataFromFile($filePath);
 
     $newBallotData = [
+        "id" => $electionId,
         "electionTitle" => $electionTitle,
         "createBy" => $_SESSION['id'],
         "groupName" => $groupName,
@@ -51,13 +53,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (preg_match("/question{$questionIndex}Choice(\d+)$/", $choiceKey, $choiceMatches)) {
                     if (!empty($choiceValue)) { // Ensure the choice is not empty
                         // Use the matched choice number to ensure the order
-                        $choices[(int)$choiceMatches[1]] = $choiceValue;
+                        $choices[$choiceValue] = 0;
                     }
                 }
             }
 
             // Re-index choices array to remove any potential gaps
-            $choices = array_values($choices);
 
             $newBallotData['questions'][] = [
                 "title" => $questionTitle,
