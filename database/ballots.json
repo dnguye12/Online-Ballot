@@ -1,88 +1,119 @@
 [
     {
-        "electionTitle": "test1",
-        "createBy": 1,
-        "groupName": "test group",
-        "startDate": "2024-02-24 16:05:00",
-        "endDate": "2024-03-02 16:05:00",
-        "status": "Not started",
-        "questions": [
-            {
-                "title": "q1",
-                "choices": [
-                    "c1",
-                    "c2",
-                    "c3"
-                ]
-            },
-            {
-                "title": "q2",
-                "choices": [
-                    "c1",
-                    "c2"
-                ]
-            }
-        ],
-        "voterList": {
-            "huy@mail.com": 1,
-            "my@mail.com": 1
-        }
-    },
-    {
-        "electionTitle": "test1",
-        "createBy": 1,
-        "groupName": "test group",
-        "startDate": "2024-02-23 16:05:00",
-        "endDate": "2024-03-01 16:05:00",
-        "status": "Running",
-        "questions": [
-            {
-                "title": "q1",
-                "choices": [
-                    "c1",
-                    "c2"
-                ]
-            },
-            {
-                "title": "c3",
-                "choices": [
-                    "q2"
-                ]
-            }
-        ],
-        "voterList": {
-            "huy@mail.com": 1
-        }
-    },
-    {
-        "electionTitle": "tst74775",
-        "createBy": 1,
-        "groupName": "testst",
-        "startDate": "2024-02-01 16:30:00",
-        "endDate": "2024-02-08 16:30:00",
+        "id": "election65d9a916efaef",
+        "electionTitle": "My election",
+        "createBy": 3,
+        "groupName": "My group",
+        "startDate": "2024-02-24 07:22:00",
+        "endDate": "2024-02-24 07:22:00",
         "status": "Closed",
         "questions": [
             {
                 "title": "q1",
-                "choices": [
-                    "c1"
-                ]
+                "choices": {
+                    "c1": 0,
+                    "c2": 0,
+                    "c3": 0
+                }
             },
             {
-                "title": "c2",
-                "choices": [
-                    "c3"
-                ]
+                "title": "q2",
+                "choices": {
+                    "c1": 0,
+                    "c2": 0
+                }
             },
             {
                 "title": "q3",
-                "choices": [
-                    "c2"
-                ]
+                "choices": {
+                    "c1": 0,
+                    "c2": 0,
+                    "c3": 0,
+                    "c4": 0
+                }
             }
         ],
         "voterList": {
-            "my@mail.com": 1
+            "huy@mail.com": 1,
+            "cac@mail.com": 1
+        }
+    },
+    {
+        "id": "election65d9a93711263",
+        "electionTitle": "My election 2",
+        "createBy": 3,
+        "groupName": "My group",
+        "startDate": "2024-02-24 07:23:00",
+        "endDate": "2024-03-02 07:23:00",
+        "status": "Running",
+        "questions": [
+            {
+                "title": "q1",
+                "choices": {
+                    "c1": 1,
+                    "c2": 0,
+                    "c3": 0
+                }
+            },
+            {
+                "title": "q2",
+                "choices": {
+                    "c1": 1,
+                    "c2": 0
+                }
+            },
+            {
+                "title": "q3",
+                "choices": {
+                    "c1": 1,
+                    "c2": 0,
+                    "c3": 0,
+                    "c4": 0
+                }
+            }
+        ],
+        "voterList": {
+            "huy@mail.com": 0,
+            "cac@mail.com": 1
+        }
+    },
+    {
+        "id": "election65d9a93e9352d",
+        "electionTitle": "My election 3",
+        "createBy": 3,
+        "groupName": "My group",
+        "startDate": "2024-03-02 07:23:00",
+        "endDate": "2024-03-02 07:23:00",
+        "status": "Not started",
+        "questions": [
+            {
+                "title": "q1",
+                "choices": {
+                    "c1": 0,
+                    "c2": 0,
+                    "c3": 0
+                }
+            },
+            {
+                "title": "q2",
+                "choices": {
+                    "c1": 0,
+                    "c2": 0
+                }
+            },
+            {
+                "title": "q3",
+                "choices": {
+                    "c1": 0,
+                    "c2": 0,
+                    "c3": 0,
+                    "c4": 0
+                }
+            }
+        ],
+        "voterList": {
+            "huy@mail.com": 1,
+            "cac@mail.com": 1
         }
     }
 ]

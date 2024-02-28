@@ -24,7 +24,6 @@ if ($foundAccount !== null) {
         $_SESSION['name'] = $foundAccount['username'];
         $_SESSION['id'] = $foundAccount['id'];
         $_SESSION['email'] = $_POST['email'];
-        echo "success";
         exit;
     }else {
         echo 'Incorrect email and/or password!';
