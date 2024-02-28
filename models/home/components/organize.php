@@ -8,7 +8,7 @@ function OrganizeBallot($ballot)
             <?php
             if ($ballot['status'] == "Running") {
                 echo "<span class='badge bg-primary'>Running</span>";
-            }  else if ($ballot['status'] == "Not started") {
+            } else if ($ballot['status'] == "Not started") {
                 echo "<span class='badge bg-warning text-dark'>Not started</span>";
             } else {
                 echo "<span class='badge bg-danger'>Closed</span>";
@@ -20,9 +20,12 @@ function OrganizeBallot($ballot)
             ?>
         </div>
         <div class="ballot_body">
-            <button>Ballot questions</button>
+            <?php
+            $ballotData = json_encode($ballot);
+            ?>
+            <button class="ballot-question" data-ballot='<?php echo $ballotData; ?>'>Ballot questions</button>
             <button>Ballot stats</button>
-            <button>Close ballot</button>
+            <button class="close-ballot" data-ballot='<?php echo $ballotData; ?>' <?php if($ballot['status'] == 'Closed') {echo 'disabled';}?>>Close ballot</button>
         </div>
     </div>
 <?php

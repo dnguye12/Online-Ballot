@@ -74,6 +74,7 @@ usort($voter, function ($a, $b) {
 			<a href="../create_ballot/create_ballot.php">Create Election</a>
 		</div>
 		<div class="organize">
+			<h3>Your election</h3>
 			<?php
 			require_once './components/organize.php';
 			foreach ($organize as $ballot) {
@@ -81,8 +82,9 @@ usort($voter, function ($a, $b) {
 			}
 			?>
 		</div>
-		<h3>You can vote for</h3>
+		
 		<div class="voter">
+		<h3>You are a voter of</h3>
 			<?php
 			require_once './components/voter.php';
 			foreach ($voter as $ballot) {
@@ -91,6 +93,9 @@ usort($voter, function ($a, $b) {
 			?>
 		</div>
 	</div>
+	<div id="ballotQuestions"></div>
+	<div id="organizeMessage"></div>
+
 	<div id="voteFormContainer"></div>
 	<div id="absentFormContainer"></div>
 	<div id="voteMessage"></div>
@@ -98,6 +103,39 @@ usort($voter, function ($a, $b) {
 
 </html>
 <?php include '../../utils/foot.php' ?>
+<script>
+	$(document).ready(function() {
+		$('.close-ballot').on('click', function() {
+			let ballot = $(this).data('ballot');
+			$.ajax({
+				url: './utils/closeBallot.php',
+				type: 'POST',
+				data: {
+					"ballot": ballot
+				},
+			}).done(function(e) {
+				$('#homeMain').hide();
+				$('#organizeMessage').html(e);
+			})
+		})
+	})
+
+	$(document).ready(function() {
+		$('.ballot-question').on('click', function() {
+			let ballot = $(this).data('ballot');
+			$.ajax({
+				url: './components/questions.php',
+				type: 'POST',
+				data: {
+					"ballot": ballot
+				},
+			}).done(function(e) {
+				$('#homeMain').hide();
+				$('#ballotQuestions').html(e);
+			})
+		})
+	})
+</script>
 <script>
 	$(document).ready(function() {
 		$('.start-vote').on('click', function() {
