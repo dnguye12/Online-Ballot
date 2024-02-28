@@ -94,10 +94,10 @@ usort($voter, function ($a, $b) {
 		</div>
 	</div>
 	<div id="ballotQuestions"></div>
+	<div id="transferVoteFormContainer"></div>
 	<div id="organizeMessage"></div>
 
 	<div id="voteFormContainer"></div>
-	<div id="absentFormContainer"></div>
 	<div id="voteMessage"></div>
 </body>
 
@@ -135,6 +135,52 @@ usort($voter, function ($a, $b) {
 			})
 		})
 	})
+
+	$(document).ready(function() {
+		$('.transfer-vote').on('click', function() {
+			let ballot = $(this).data('ballot');
+			$.ajax({
+				url: './components/transferVoteForm.php',
+				type: 'POST',
+				data: {
+					"ballot": ballot
+				},
+			}).done(function(e) {
+				$('#homeMain').hide();
+				$('#transferVoteFormContainer').html(e);
+			})
+		})
+	})
+
+	$(document).ready(function() {
+		$('.home').on('submit', '#transferForm', function(e) {
+			e.preventDefault();
+			let formData = $(this).serialize();
+			let res = formData.split('&').reduce(function(acc, curr) {
+				let parts = curr.split('=');
+				if (!acc.transfer) {
+					acc.transfer = [];
+				}
+				if (parts[0] === 'ballotId') {
+					acc[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
+				} else {
+					acc.transfer.push(decodeURIComponent(parts[1]));
+				}
+				return acc;
+			}, {})
+
+			$.ajax({
+				url: './utils/transferVote.php',
+				type: 'POST',
+				data: {
+					"res": res
+				},
+			}).done(function(e) {
+				$('#homeMain').hide();
+				$('#organizeMessage').html(e);
+			})
+		})
+	})
 </script>
 <script>
 	$(document).ready(function() {
@@ -149,23 +195,6 @@ usort($voter, function ($a, $b) {
 			}).done(function(e) {
 				$('#homeMain').hide();
 				$('#voteFormContainer').html(e);
-			})
-		})
-	})
-
-	$(document).ready(function() {
-		$('.declare-absent').on('click', function() {
-			let ballot = $(this).data('ballot');
-			let voteCount = $(this).data('voteCount');
-			$.ajax({
-				url: './components/absentForm.php',
-				type: 'POST',
-				data: {
-					"ballot": ballot
-				},
-			}).done(function(e) {
-				$('#homeMain').hide();
-				$('#absentFormContainer').html(e);
 			})
 		})
 	})

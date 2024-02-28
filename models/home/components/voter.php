@@ -30,8 +30,6 @@ function VoterBallot($ballot)
             ?>
             <button class="start-vote"  data-ballot='<?php echo $ballotData; ?>' <?php if($disableButton) {echo 'disabled';}?>>Start Voting</button>
             <button>Election stats</button>
-            <button class="declare-absent" data-ballot='<?php echo $ballotData; ?>' <?php if($disableButton) {echo 'disabled';}?>>Declare absent</button>
-
         </div>
     </div>
 <?php

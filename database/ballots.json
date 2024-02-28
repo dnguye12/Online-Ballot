@@ -144,8 +144,39 @@
         ],
         "voterList": {
             "huy@mail.com": 0,
+            "cac@mail.com": 1,
+            "my@mail.com": 1
+        }
+    },
+    {
+        "id": "election65df686e306a4",
+        "electionTitle": "Huy Election 2",
+        "createBy": 1,
+        "groupName": "",
+        "startDate": "2024-02-28 18:07:00",
+        "endDate": "2024-03-10 18:07:00",
+        "status": "Running",
+        "questions": [
+            {
+                "title": "q1",
+                "choices": {
+                    "c1": 0,
+                    "c2": 0
+                }
+            },
+            {
+                "title": "c3",
+                "choices": {
+                    "q2": 0,
+                    "c1": 0,
+                    "c2": 0
+                }
+            }
+        ],
+        "voterList": {
+            "huy@mail.com": 0,
             "cac@mail.com": 2,
-            "my@mail.com": 2
+            "my@mail.com": 1
         }
     }
 ]

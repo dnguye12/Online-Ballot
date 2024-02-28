@@ -26,6 +26,8 @@ function OrganizeBallot($ballot)
             <button class="ballot-question" data-ballot='<?php echo $ballotData; ?>'>Ballot questions</button>
             <button>Ballot stats</button>
             <button class="close-ballot" data-ballot='<?php echo $ballotData; ?>' <?php if($ballot['status'] == 'Closed') {echo 'disabled';}?>>Close ballot</button>
+            <button class="transfer-vote" data-ballot='<?php echo $ballotData; ?>' <?php if($ballot['status'] == 'Closed') {echo 'disabled';}?>>Transfer vote</button>
+            <button <?php if($ballot['status'] == 'Closed') {echo 'disabled';}?>>Add voters</button>
         </div>
     </div>
 <?php
