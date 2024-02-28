@@ -4,6 +4,8 @@ function VoterBallot($ballot)
     require_once './utils/ballotService.php';
     $myVote = getRemainingVote($ballot);
     ob_start();
+
+    $disableButton = ($myVote <= 0 or $ballot['status'] != "Running");
 ?>
     <div class="ballot_voter border">
         <div class="ballot_header">
@@ -26,9 +28,10 @@ function VoterBallot($ballot)
             <?php
                 $ballotData = json_encode($ballot);
             ?>
-            <button class="start-vote"  data-ballot='<?php echo $ballotData; ?>' <?php if($myVote <= 0) {echo 'disabled';}?>>Start Voting</button>
+            <button class="start-vote"  data-ballot='<?php echo $ballotData; ?>' <?php if($disableButton) {echo 'disabled';}?>>Start Voting</button>
             <button>Election stats</button>
-            <button <?php if($myVote <= 0) {echo 'disabled';}?>>Declare absent</button>
+            <button class="declare-absent" data-ballot='<?php echo $ballotData; ?>' <?php if($disableButton) {echo 'disabled';}?>>Declare absent</button>
+
         </div>
     </div>
 <?php

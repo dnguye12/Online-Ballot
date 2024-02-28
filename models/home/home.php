@@ -92,6 +92,7 @@ usort($voter, function ($a, $b) {
 		</div>
 	</div>
 	<div id="voteFormContainer"></div>
+	<div id="absentFormContainer"></div>
 	<div id="voteMessage"></div>
 </body>
 
@@ -104,26 +105,45 @@ usort($voter, function ($a, $b) {
 			$.ajax({
 				url: './components/voteForm.php',
 				type: 'POST',
-				data: {"ballot" : ballot},
+				data: {
+					"ballot": ballot
+				},
 			}).done(function(e) {
 				$('#homeMain').hide();
 				$('#voteFormContainer').html(e);
 			})
 		})
 	})
-	
+
+	$(document).ready(function() {
+		$('.declare-absent').on('click', function() {
+			let ballot = $(this).data('ballot');
+			let voteCount = $(this).data('voteCount');
+			$.ajax({
+				url: './components/absentForm.php',
+				type: 'POST',
+				data: {
+					"ballot": ballot
+				},
+			}).done(function(e) {
+				$('#homeMain').hide();
+				$('#absentFormContainer').html(e);
+			})
+		})
+	})
+
 	$(document).ready(function() {
 		$('.home').on('submit', '#voteForm', function(e) {
 			e.preventDefault();
 			let formData = $(this).serialize();
 			let res = formData.split('&').reduce(function(acc, curr) {
 				let parts = curr.split('=');
-				if(!acc.questions) {
+				if (!acc.questions) {
 					acc.questions = [];
 				}
-				if(parts[0] === 'ballotId' || parts[0] === 'email') {
+				if (parts[0] === 'ballotId' || parts[0] === 'email') {
 					acc[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
-				}else {
+				} else {
 					acc.questions.push(decodeURIComponent(parts[1]));
 				}
 				return acc;
@@ -132,7 +152,40 @@ usort($voter, function ($a, $b) {
 			$.ajax({
 				url: './utils/saveVote.php',
 				type: 'POST',
-				data: {"res": res},
+				data: {
+					"res": res
+				},
+			}).done(function(e) {
+				$('#homeMain').hide();
+				$('#voteMessage').html(e);
+			})
+		})
+	})
+
+	$(document).ready(function() {
+		$('.home').on('submit', '#absentForm', function(e) {
+			e.preventDefault();
+			let formData = $(this).serialize();
+
+			let res = formData.split('&').reduce(function(acc, curr) {
+				let parts = curr.split('=');
+				if (!acc.assign) {
+					acc.assign = [];
+				}
+				if(parts[0] === 'ballotId' || parts[0] === 'email') {
+					acc[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
+				}else {
+					acc.assign.push(decodeURIComponent(parts[1]));
+				}
+				return acc;
+			}, {})
+
+			$.ajax({
+				url: './utils/assignVote.php',
+				type: 'POST',
+				data: {
+					"res": res
+				},
 			}).done(function(e) {
 				$('#homeMain').hide();
 				$('#voteMessage').html(e);
@@ -140,3 +193,4 @@ usort($voter, function ($a, $b) {
 		})
 	})
 </script>
+
