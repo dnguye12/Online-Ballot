@@ -1,0 +1,156 @@
+@import url('./styles.css');
+
+header .navbar-brand {
+    font-family: "Carter One", system-ui !important;
+    font-size: 24px;
+    color: var(--col-gray-dark);
+}
+
+header .hero .trusted{
+    color: var(--col-orange);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 34px;
+}
+
+header .hero h1 {
+    color: var(--col-gray-dark);
+    font-size: 48px;
+    font-family: "Carter One", system-ui !important;
+    line-height: 58px;
+}
+
+header .hero .quote {
+    color: var(--col-gray);
+    font-size: 18px;
+    line-height: 30px;
+}
+
+header .hero .hero-login {
+    font-weight: 600;
+    height: 70px;
+    background-color: var(--col-orange);
+    border: 1px solid var(--col-orange);
+    border-radius: 3px;
+    color: var(--col-white);
+    transition: 350ms;
+    text-decoration: none;
+    font-size: 21px;
+}
+
+header .hero .hero-login:hover {
+    background-color: var(--col-white);
+    color: var(--col-orange);
+}
+
+header .hero .hero-reg {
+    font-weight: 600;
+    height: 70px;
+    background-color: transparent;
+    border: 1px solid var(--col-gray-dark);
+    border-radius: 3px;
+    color: var(--col-gray-dark);
+    transition: 350ms;
+    text-decoration: none;
+    font-size: 21px;
+}
+
+header .hero .hero-reg:hover {
+    background-color: var(--col-gray-dark);
+    color: var(--col-white)
+}
+
+.features {
+    background-color: var(--col-grey);
+}
+
+.features h3 {
+    color: var(--col-gray-dark);
+    font-family: "Carter One", system-ui !important;
+    font-size: 40px;
+    line-height: 54px;
+}
+
+.features .row .feature {
+    background-color: var(--col-white);
+    border-radius: 3px;
+}
+
+.features .row .feature i {
+    font-size: 24px;
+    color: var(--col-orange);
+}
+
+.features .row .feature b {
+    color: var(--col-black);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.features .row .feature p {
+    color: var(--col-gray);
+    font-size: 16px;
+}
+
+footer {
+    color: var(--col-gray);
+    font-size: 14px;
+}
+
+footer b {
+    color: var(--col-black);
+}
+
+@media only screen and (min-width: 576px) {
+    header .login-btn {
+        background-color: var(--col-orange);
+        color: var(--col-white);
+        font-size: 15px;
+        font-weight: 600;
+        border: 1px solid var(--col-orange);
+        transition: 350ms;
+        border-radius: 3px;
+    }
+
+    header .login-btn:hover {
+        background-color: var(--col-white);
+        color: var(--col-orange);
+    }
+
+    header .reg-btn {
+        color: var(--col-gray-dark);
+        font-size: 15px;
+        font-weight: 600;
+        border: 1px solid var(--col-white);
+        transition: 350ms;
+        border-radius: 3px;
+    }
+
+    header .reg-btn:hover {
+        background-color: var(--col-gray-dark);
+        color: var(--col-white);
+        border: 1px solid var(--col-gray-dark);
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    header button.navbar-toggler {
+        border: none !important;
+        outline: 0 !important;
+    }
+
+    header .login-btn,
+    header .reg-btn {
+        box-shadow: none !important;
+        color: var(--col-gray-dark);
+        font-size: 16px;
+        font-weight: 400;
+        outline-offset: -1px;
+        transition: 350ms;
+    }
+
+    header .login-btn:hover,
+    header .reg-btn:hover {
+        color: var(--color-gray);
+    }
+}

@@ -1,0 +1,12 @@
+:root {
+    --col-orange: #ff9021;
+    --col-grey: #eceeef;
+    --col-gray: #8d8d8d;
+    --col-gray-dark: #00263a;
+    --col-white: #fff;
+    --col-black: #2c2c2c;
+}
+
+body {
+    font-family: "Inter", sans-serif !important;
+}
