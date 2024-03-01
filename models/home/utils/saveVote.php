@@ -21,6 +21,7 @@
             if($ballot['id'] === $res_ballotId) {
                 $ballot_title = $ballot['electionTitle'];
                 $ballot['voterList'][$res_email] = $ballot['voterList'][$res_email] - 1;
+                $ballot['votedList'][$res_email] = $ballot['votedList'][$res_email] + 1;
 
                 for($x = 0; $x < count($ballot['questions']); $x++) {
                     $ballot['questions'][$x]['choices'][$res_questions[$x]]++;

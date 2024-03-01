@@ -29,7 +29,7 @@ function VoterBallot($ballot)
                 $ballotData = json_encode($ballot);
             ?>
             <button class="start-vote"  data-ballot='<?php echo $ballotData; ?>' <?php if($disableButton) {echo 'disabled';}?>>Start Voting</button>
-            <button>Election stats</button>
+            <button class="stat" data-ballot='<?php echo $ballotData; ?>'>Election stats</button>
         </div>
     </div>
 <?php

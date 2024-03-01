@@ -36,6 +36,10 @@
         "voterList": {
             "huy@mail.com": 1,
             "cac@mail.com": 1
+        },
+        "votedList": {
+            "huy@mail.com": 0,
+            "cac@mail.com": 0
         }
     },
     {
@@ -75,6 +79,10 @@
         "voterList": {
             "huy@mail.com": 0,
             "cac@mail.com": 1
+        },
+        "votedList": {
+            "huy@mail.com": 0,
+            "cac@mail.com": 0
         }
     },
     {
@@ -114,6 +122,10 @@
         "voterList": {
             "huy@mail.com": 1,
             "cac@mail.com": 1
+        },
+        "votedList": {
+            "huy@mail.com": 0,
+            "cac@mail.com": 0
         }
     },
     {
@@ -146,6 +158,11 @@
             "huy@mail.com": 0,
             "cac@mail.com": 1,
             "my@mail.com": 1
+        },
+        "votedList": {
+            "huy@mail.com": 0,
+            "cac@mail.com": 0,
+            "my@mail.com": 0
         }
     },
     {
@@ -177,6 +194,47 @@
             "huy@mail.com": 0,
             "cac@mail.com": 2,
             "my@mail.com": 1
+        },
+        "votedList": {
+            "huy@mail.com": 0,
+            "cac@mail.com": 0,
+            "my@mail.com": 0
+        }
+    },
+    {
+        "id": "election65e174b3db517",
+        "electionTitle": "Huy Election 3",
+        "createBy": 1,
+        "groupName": "",
+        "startDate": "2024-03-01 07:24:00",
+        "endDate": "2024-03-23 07:24:00",
+        "status": "Running",
+        "questions": [
+            {
+                "title": "q1",
+                "choices": {
+                    "c1": 0,
+                    "c2": 1,
+                    "c3": 1
+                }
+            },
+            {
+                "title": "q2",
+                "choices": {
+                    "c1": 2,
+                    "c2": 0
+                }
+            }
+        ],
+        "voterList": {
+            "huy@mail.com": 1,
+            "cac@mail.com": 1,
+            "my@mail.com": 1
+        },
+        "votedList": {
+            "huy@mail.com": 1,
+            "cac@mail.com": 0,
+            "my@mail.com": 0
         }
     }
 ]

@@ -99,6 +99,8 @@ usort($voter, function ($a, $b) {
 
 	<div id="voteFormContainer"></div>
 	<div id="voteMessage"></div>
+
+	<div id="statContainer"></div>
 </body>
 
 </html>
@@ -153,6 +155,22 @@ usort($voter, function ($a, $b) {
 	})
 
 	$(document).ready(function() {
+		$('.stat').on('click', function() {
+			let ballot = $(this).data('ballot');
+			$.ajax({
+				url: './components/stat.php',
+				type: 'POST',
+				data: {
+					"ballot": ballot
+				},
+			}).done(function(e) {
+				$('#homeMain').hide();
+				$('#statContainer').html(e);
+			})
+		})
+	})
+
+	$(document).ready(function() {
 		$('.home').on('submit', '#transferForm', function(e) {
 			e.preventDefault();
 			let formData = $(this).serialize();
@@ -197,7 +215,7 @@ usort($voter, function ($a, $b) {
 				$('#voteFormContainer').html(e);
 			})
 		})
-	})
+	});
 
 	$(document).ready(function() {
 		$('.home').on('submit', '#voteForm', function(e) {

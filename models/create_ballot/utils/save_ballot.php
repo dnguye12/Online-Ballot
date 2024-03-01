@@ -36,9 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "endDate" => $endDateFormatted,
         "status" => $status,
         "questions" => [],
-        "voterList" => []
+        "voterList" => [],
+        "votedList" => []
     ];
     $validatedVoterEmails = [];
+    $validatedVoterEmails2 = [];
     // Iterate over $_POST to find questions and choices
     foreach ($_POST as $key => $value) {
         if (preg_match('/question(\d+)Title$/', $key, $matches)) {
@@ -68,10 +70,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $voterEmail = trim($value);
             if (filter_var($voterEmail, FILTER_VALIDATE_EMAIL)) {
                 $validatedVoterEmails[$voterEmail] = 1;
+                $validatedVoterEmails2[$voterEmail] = 0;
             }
         }
     }
     $newBallotData['voterList'] = $validatedVoterEmails;
+    $newBallotData['votedList'] = $validatedVoterEmails2;
 
     // Append new ballot data to existing data
     $existingData[] = $newBallotData; // Append the new ballot to the list
