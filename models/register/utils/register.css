@@ -1,0 +1,99 @@
+@import url('../../../utils/styles.css');
+
+header .navbar {
+    height: 64.5px;
+}
+
+header a {
+    font-family: "Carter One", system-ui !important;
+    font-size: 24px;
+    color: var(--col-gray-dark);
+    text-decoration: none;
+}
+
+.register h1 {
+    font-size: 36px;
+    color: var(--col-black);
+    font-weight: 600;
+}
+
+.register p {
+    color: var(--col-black);
+}
+
+.register p a {
+    color: var(--col-orange);
+}
+
+.register .container {
+    max-width: 450px;
+    width: 100%;
+}
+
+.register label {
+    font-weight: 600;
+    color: var(--col-black);
+    line-height: 16px;
+}
+
+.register input:not([type='submit']) {
+    border: 0px solid transparent;
+    color: var(--col-black);
+    background-color: var(--col-grey);
+    border-radius: 3px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 15px;
+    font-size: 18px;
+    width: 100%;
+}
+
+.register input:not([type='submit'])::placeholder {
+    color: var(--col-gray);
+}
+
+.register input[type="submit"] {
+    border: transparent;
+    background-color: var(--col-gray-dark);
+    color: var(--col-white);
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    transition: 350ms;
+    padding: 12px 20px;
+    border-radius: 3px;
+}
+
+.register input[type="submit"]:hover {
+    background-color: var(--col-orange);
+}
+
+#registrationMessage {
+    color: var(--col-black);
+    width: 100%;
+    max-width: 450px;
+}
+
+#registrationMessage a {
+    border: transparent;
+    background-color: var(--col-gray-dark);
+    color: var(--col-white);
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+    transition: 350ms;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 3px;
+    width: 100%;
+    display: block;
+}
+
+#registrationMessage a:hover {
+    background-color: var(--col-orange);
+}

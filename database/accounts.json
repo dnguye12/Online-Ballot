@@ -28,5 +28,17 @@
         "username": "Notch",
         "password": "$2y$10$hB28x5Vcohy7AHXDdaNbIOO9NKzzRMbW5Hc8LcaKPivd3pBxowHjW",
         "email": "notch@mail.com"
+    },
+    {
+        "id": 6,
+        "username": "duchuyng051",
+        "password": "$2y$10$pf0d6H4DMbtqgLBmJXOCqOaqc55wOYulT.Db4TS3KKO\/7UweIFXY6",
+        "email": "duchuyng051@mail.com"
+    },
+    {
+        "id": 7,
+        "username": "huy1",
+        "password": "$2y$10$9fjK7ET.r1qjQ\/GiGYKPpuzbcbhvTuv6odxa6m5xU9.dmcJcBLKau",
+        "email": "tjktakbuonngu@gmail.com"
     }
 ]

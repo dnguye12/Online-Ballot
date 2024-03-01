@@ -3,28 +3,48 @@
 
 <head>
 	<?php include '../../utils/head.php'; ?>
+	<link rel="stylesheet" href="utils/register.css">
 </head>
 
 <body>
-	<div class="register">
-		<h1>Register</h1>
-		<form id="registrationForm" autocomplete="off">
-			<label for="username">
-				<i class="fas fa-user"></i>
-			</label>
-			<input type="text" name="username" placeholder="Username" id="username" required>
-			<label for="password">
-				<i class="fas fa-lock"></i>
-			</label>
-			<input type="password" name="password" placeholder="Password" id="password" required>
-			<label for="email">
-				<i class="fas fa-envelope"></i>
-			</label>
-			<input type="email" name="email" placeholder="Email" id="email" required>
-			<input type="submit" value="Register">
-		</form>
+	<header>
+		<nav class="navbar shadow-sm">
+			<div class="container">
+				<a href="../../index.php">OnlineBallot</a>
+			</div>
+		</nav>
+	</header>
+	<div class="register my-5">
+		<div class="container">
+			<h1>Register</h1>
+			<p>If you already have an account, <a href="../login/login.php">Login</a></p>
+			<form id="registrationForm" autocomplete="off">
+				<div class="mb-3">
+				<label for="username" class="mb-2">
+					<i class="fas fa-user"></i> Username
+				</label><br>
+				<input type="text" name="username" placeholder="Username" id="username" required>
+				</div>
+
+				<div class="mb-3">
+				<label for="password" class="mb-2">
+					<i class="fas fa-lock"></i> Password
+				</label><br>
+				<input type="password" name="password" placeholder="Password" id="password" required>
+				</div>
+
+				<div class="mb-3">
+				<label for="email" class="mb-2">
+					<i class="fas fa-envelope"></i> Email
+				</label><br>
+				<input type="email" name="email" placeholder="Email" id="email" required>
+				</div>
+
+				<input type="submit" value="Register" class="w-100">
+			</form>
+		</div>
 	</div>
-	<div id="registrationMessage"></div>
+	<div id="registrationMessage"  class="container my-5"></div>
 </body>
 
 </html>
