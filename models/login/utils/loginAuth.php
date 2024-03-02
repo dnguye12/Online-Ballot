@@ -1,3 +1,4 @@
+<script src="../../utils/alertHandler.js"></script>
 <?php include '../../../utils/databaseHandler.php' ?>
 <?php
 session_start();
@@ -5,7 +6,10 @@ session_start();
 $jsonFilePath = '../../../database/accounts.json';
 
 if (!isset($_POST['email'], $_POST['password'])) {
-    exit('Please fill both the email and password fields!');
+    echo '<script type="text/javascript">
+        AlertError("Missing information", "Please fill both the email and password fields!");
+        </script>';
+    exit;
 }
 
 $accounts = loadDataFromFile($jsonFilePath);
@@ -27,11 +31,15 @@ if ($foundAccount !== null) {
         echo "success";
         exit;
     }else {
-        echo 'Incorrect email and/or password!';
-        echo '<br><a href="login.php">Go Back</a>';
+        echo '<script type="text/javascript">
+        AlertError("Incorrect email and/or password", "Please re check your login information!");
+        </script>';
+    exit;
     }
 }else {
-    echo 'Incorrect email and/or password!';
-    echo '<br><a href="login.php">Go Back</a>';
+    echo '<script type="text/javascript">
+        AlertError("Incorrect email and/or password", "Please re check your login information!");
+        </script>';
+    exit;
 }
 ?>

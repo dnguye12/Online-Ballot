@@ -50,10 +50,9 @@
 				url: 'utils/loginAuth.php',
 				data: $(this).serialize(),
 			}).done(function(e) {
-				if (e === 'success') {
+				if (e.includes("success")) {
 					window.location.href = '../home/home.php';
 				} else {
-					$('.login').hide();
 					$('#loginMessage').html(e);
 				}
 			})
