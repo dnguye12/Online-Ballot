@@ -5,8 +5,27 @@
     --col-gray-dark: #00263a;
     --col-white: #fff;
     --col-black: #2c2c2c;
+    --col-red: #fe3c45;
 }
 
 body {
     font-family: "Inter", sans-serif !important;
+}
+
+.alertTitle {
+    color: var(--col-black);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.alertText {
+    color: var(--col-gray);
+    font-size: 16px;
+}
+
+.alertConfirmBtn {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    transition: 350ms !important;
+    padding: 8px 16px !important;
 }

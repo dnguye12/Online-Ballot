@@ -31,14 +31,20 @@
     },
     {
         "id": 6,
-        "username": "duchuyng051",
-        "password": "$2y$10$pf0d6H4DMbtqgLBmJXOCqOaqc55wOYulT.Db4TS3KKO\/7UweIFXY6",
-        "email": "duchuyng051@mail.com"
+        "username": "huy123456",
+        "password": "$2y$10$MiCirWNmcts1M7niSBK9g.BJwJpxmUe0mYMazLehsGgdpFsR9v5m6",
+        "email": "huy1@mail.com"
     },
     {
         "id": 7,
-        "username": "huy1",
-        "password": "$2y$10$9fjK7ET.r1qjQ\/GiGYKPpuzbcbhvTuv6odxa6m5xU9.dmcJcBLKau",
-        "email": "tjktakbuonngu@gmail.com"
+        "username": "huy2",
+        "password": "$2y$10$RB\/iDxotgYhuYNTRLlysE.xbiy0SXxneXEsFk6H.lUWqrTp\/vfw7G",
+        "email": "huy2@mail.com"
+    },
+    {
+        "id": 8,
+        "username": "huy3",
+        "password": "$2y$10$hol6fq3LRdaWigzzMNoa3ed0cPtjtNatYhUOd7dkMo5AZAi\/Tf2Cy",
+        "email": "huy3@mail.com"
     }
 ]

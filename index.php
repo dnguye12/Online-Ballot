@@ -35,8 +35,8 @@
                     <h1>Easy Online Ballot <br>Excellence</h1>
                     <p class="quote">OnlineBallot guarantees election integrity,<br>boosts voter engagement and saves serious hours.</p>
                     <div class="d-flex">
-                        <a href="models/login/login.php" class="hero-login px-3 py-2 d-flex justify-content-center align-items-center me-2 w-50 shadow-sm">Login</a>
-                        <a href="models/register/register.php" class="hero-reg px-3 py-2 d-flex justify-content-center align-items-center ms-1 w-50 shadow-sm">Signup</a>
+                        <a href="models/login/login.php" class="hero-login px-3 py-2 d-flex justify-content-center align-items-center me-2 w-50 shadow-sm"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</a>
+                        <a href="models/register/register.php" class="hero-reg px-3 py-2 d-flex justify-content-center align-items-center ms-1 w-50 shadow-sm"><i class="fa-solid fa-user-plus me-1"></i>Signup</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-12">

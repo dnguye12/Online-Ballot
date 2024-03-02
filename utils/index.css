@@ -28,14 +28,14 @@ header .hero .quote {
 
 header .hero .hero-login {
     font-weight: 600;
-    height: 70px;
+    height: 64px;
     background-color: var(--col-orange);
     border: 1px solid var(--col-orange);
     border-radius: 3px;
     color: var(--col-white);
     transition: 350ms;
     text-decoration: none;
-    font-size: 21px;
+    font-size: 18px;
 }
 
 header .hero .hero-login:hover {
@@ -45,14 +45,14 @@ header .hero .hero-login:hover {
 
 header .hero .hero-reg {
     font-weight: 600;
-    height: 70px;
+    height: 64px;
     background-color: transparent;
     border: 1px solid var(--col-gray-dark);
     border-radius: 3px;
     color: var(--col-gray-dark);
     transition: 350ms;
     text-decoration: none;
-    font-size: 21px;
+    font-size: 18px;
 }
 
 header .hero .hero-reg:hover {

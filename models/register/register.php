@@ -58,7 +58,10 @@
 				url: 'utils/registerAuth.php',
 				data: $(this).serialize(),
 			}).done(function(e) {
-				$('.register').hide();
+				console.log(e);
+				if(e.includes("You have successfully registered!")) {
+					$('.register').hide();
+				}
 				$('#registrationMessage').html(e);
 			})
 		})
