@@ -7,7 +7,7 @@ header .navbar {
 header a {
     font-family: "Carter One", system-ui !important;
     font-size: 24px;
-    color: var(--col-gray-dark);
+    color: var(--col-black);
     text-decoration: none;
 }
 
@@ -54,7 +54,7 @@ header a {
 
 .register input[type="submit"] {
     border: transparent;
-    background-color: var(--col-gray-dark);
+    background-color: var(--col-black);
     color: var(--col-white);
     margin-left: auto;
     margin-right: auto;
@@ -78,7 +78,7 @@ header a {
 
 #registrationMessage a {
     border: transparent;
-    background-color: var(--col-gray-dark);
+    background-color: var(--col-black);
     color: var(--col-white);
     margin-left: auto;
     margin-right: auto;

@@ -1,0 +1,109 @@
+@import url('../../../utils/styles.css');
+
+header .navbar {
+    height: 64.5px;
+}
+
+header .logo {
+    font-family: "Carter One", system-ui !important;
+    font-size: 24px;
+    color: var(--col-black);
+    text-decoration: none;
+}
+
+header .logoutbtn {
+    color: var(--col-black);
+        font-size: 15px;
+        font-weight: 600;
+        border: 1px solid var(--col-black);
+        transition: 350ms;
+        border-radius: 3px;
+}
+
+header .logoutbtn:hover {
+    background-color: var(--col-black);
+        color: var(--col-white);
+        border: 1px solid var(--col-black);
+}
+
+#homeMain .welcome .content h2 {
+    font-size: 36px;
+    color: var(--col-black);
+    font-family: "Carter One", system-ui !important;
+}
+
+#homeMain .welcome .content p {
+    color: var(--col-black);
+    line-height: 16px;
+}
+
+#homeMain .welcome .action .createbtn {
+    background-color: var(--col-orange);
+    color: var(--col-white);
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid var(--col-orange);
+    transition: 350ms;
+    border-radius: 3px;
+}
+
+#homeMain .welcome .action .createbtn:hover {
+    background-color: var(--col-white);
+    color: var(--col-orange);
+}
+
+#homeMain .welcome .action .logoutbtn {
+    color: var(--col-black);
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid var(--col-black);
+    transition: 350ms;
+    border-radius: 3px;
+}
+
+#homeMain .welcome .action .logoutbtn:hover {
+    background-color: var(--col-black);
+    color: var(--col-white);
+    border: 1px solid var(--col-black);
+}
+
+#homeMain .organize .container-header, #homeMain .voter .container-header {
+    background-color: var(--col-black);
+    color: var(--col-white);
+    overflow: hidden;
+    border-radius: .25rem .25rem 0 0;
+}
+
+#homeMain .organize .container-header h3, #homeMain .voter .container-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#homeMain .organize .ballot_header h4, #homeMain .voter .ballot_header h4{
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--col-black);
+}
+
+#homeMain .organize .ballot_header p, #homeMain .voter .ballot_header p {
+    color: var(--col-gray-dark);
+    font-weight: 500;
+}
+
+#homeMain .voter .ballot_header .voteCount {
+    font-weight: 400;
+}
+
+#homeMain .organize .ballot_body button, #homeMain .voter .ballot_body button {
+    font-size: 15px;
+    transition: 350ms
+}
+
+footer {
+    color: var(--col-gray);
+    font-size: 14px;
+}
+
+footer b {
+    color: var(--col-black);
+}

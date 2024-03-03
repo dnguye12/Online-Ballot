@@ -3,9 +3,16 @@ function OrganizeBallot($ballot)
 {
     ob_start();
 ?>
-    <div class="ballot_org border">
+<div class="col-12 col-md-6 col-xl-4">
+    <div class="ballot_org border rounded shadow-sm p-3">
         <div class="ballot_header">
             <?php
+            echo '<div class="d-flex align-items-center">';
+            echo "<h4 class='mb-0'>" . $ballot["electionTitle"] . "</h4>";
+            if (isset($ballot["groupName"]) && $ballot["groupName"] != "") {
+                echo "<p class='mb-0 ms-1'> — " . $ballot["groupName"] .  "</p>";
+            }
+            echo "</div>";
             if ($ballot['status'] == "Running") {
                 echo "<span class='badge bg-primary'>Running</span>";
             } else if ($ballot['status'] == "Not started") {
@@ -13,21 +20,23 @@ function OrganizeBallot($ballot)
             } else {
                 echo "<span class='badge bg-danger'>Closed</span>";
             }
-            echo "<h4>" . $ballot["electionTitle"] . "</h4>";
-            if (isset($ballot["groupName"]) && $ballot["groupName"] != "") {
-                echo "<p> — " . $ballot["groupName"] .  "</p>";
-            }
             ?>
         </div>
-        <div class="ballot_body">
+        <div class="ballot_body d-flex flex-column justify-content-center align-items-start">
             <?php
             $ballotData = json_encode($ballot);
             ?>
-            <button class="ballot-question" data-ballot='<?php echo $ballotData; ?>'>Ballot questions</button>
-            <button class="stat" data-ballot='<?php echo $ballotData; ?>'>Ballot stats</button>
-            <button class="close-ballot" data-ballot='<?php echo $ballotData; ?>' <?php if($ballot['status'] == 'Closed') {echo 'disabled';}?>>Close ballot</button>
-            <button class="transfer-vote" data-ballot='<?php echo $ballotData; ?>' <?php if($ballot['status'] == 'Closed') {echo 'disabled';}?>>Transfer vote</button>
+            <div class="my-2">
+            <button class="ballot-question btn shadow-sm rounded btn-outline-dark mt-1" data-ballot='<?php echo $ballotData; ?>'><i class="fa-solid fa-question me-1"></i>Questions</button>
+            <button class="stat btn shadow-sm rounded btn-outline-dark mt-1" data-ballot='<?php echo $ballotData; ?>'><i class="fa-solid fa-chart-column me-1"></i>Ballot stats</button> 
+            <button class="transfer-vote btn shadow-sm rounded btn-outline-primary mt-1" data-ballot='<?php echo $ballotData; ?>' <?php if($ballot['status'] == 'Closed') {echo 'disabled';}?>><i class="fa-solid fa-arrow-right-arrow-left me-1"></i>Transfer vote</button>
+            </div>
+            <div>
+            <button class="close-ballot btn shadow-sm rounded btn-outline-danger mt-1 mt-sm-0" data-ballot='<?php echo $ballotData; ?>' <?php if($ballot['status'] == 'Closed') {echo 'disabled';}?>><i class="fa-solid fa-lock me-1"></i>Close ballot</button>
+            <button class="delete-ballot btn shadow-sm rounded btn-outline-danger mt-1 mt-sm-0" data-ballot='<?php echo $ballotData; ?>' <?php if($ballot['status'] != 'Closed') {echo 'disabled';}?>><i class="fa-solid fa-trash me-1"></i>Delete ballot</button>
+            </div>
         </div>
+    </div>
     </div>
 <?php
     $html = ob_get_clean();

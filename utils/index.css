@@ -3,7 +3,7 @@
 header .navbar-brand {
     font-family: "Carter One", system-ui !important;
     font-size: 24px;
-    color: var(--col-gray-dark);
+    color: var(--col-black);
 }
 
 header .hero .trusted{
@@ -14,7 +14,7 @@ header .hero .trusted{
 }
 
 header .hero h1 {
-    color: var(--col-gray-dark);
+    color: var(--col-black);
     font-size: 48px;
     font-family: "Carter One", system-ui !important;
     line-height: 58px;
@@ -47,16 +47,16 @@ header .hero .hero-reg {
     font-weight: 600;
     height: 64px;
     background-color: transparent;
-    border: 1px solid var(--col-gray-dark);
+    border: 1px solid var(--col-black);
     border-radius: 3px;
-    color: var(--col-gray-dark);
+    color: var(--col-black);
     transition: 350ms;
     text-decoration: none;
     font-size: 18px;
 }
 
 header .hero .hero-reg:hover {
-    background-color: var(--col-gray-dark);
+    background-color: var(--col-black);
     color: var(--col-white)
 }
 
@@ -65,7 +65,7 @@ header .hero .hero-reg:hover {
 }
 
 .features h3 {
-    color: var(--col-gray-dark);
+    color: var(--col-black);
     font-family: "Carter One", system-ui !important;
     font-size: 40px;
     line-height: 54px;
@@ -118,18 +118,18 @@ footer b {
     }
 
     header .reg-btn {
-        color: var(--col-gray-dark);
+        color: var(--col-black);
         font-size: 15px;
         font-weight: 600;
-        border: 1px solid var(--col-white);
+        border: 1px solid var(--col-black);
         transition: 350ms;
         border-radius: 3px;
     }
 
     header .reg-btn:hover {
-        background-color: var(--col-gray-dark);
+        background-color: var(--col-black);
         color: var(--col-white);
-        border: 1px solid var(--col-gray-dark);
+        border: 1px solid var(--col-black);
     }
 }
 
@@ -142,7 +142,7 @@ footer b {
     header .login-btn,
     header .reg-btn {
         box-shadow: none !important;
-        color: var(--col-gray-dark);
+        color: var(--col-black);
         font-size: 16px;
         font-weight: 400;
         outline-offset: -1px;

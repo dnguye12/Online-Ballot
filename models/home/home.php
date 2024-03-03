@@ -3,6 +3,7 @@
 
 <head>
 	<?php include '../../utils/head.php'; ?>
+	<link rel="stylesheet" href="./utils/home.css">
 </head>
 <?php include '../../utils/databaseHandler.php' ?>
 <?php
@@ -58,39 +59,53 @@ usort($voter, function ($a, $b) {
 ?>
 
 <body class="home">
-	<div id="homeMain">
-		<nav class="navtop">
-			<div>
-				<h1>Website Title</h1>
-				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
-				<a href="utils/logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+	<header>
+		<nav class="navbar shadow-sm">
+			<div class="container">
+				<a href="#" class="logo">OnlineBallot</a>
+				<a href="utils/logout.php" class="logoutbtn nav-link px-sm-3 py-sm-2 me-sm-2 p-2 shadow-sm"><i class="fas fa-sign-out-alt me-1"></i>Logout</a>
 			</div>
 		</nav>
-		<div class="content">
-			<h2>Home Page</h2>
-			<p>Welcome back, <?= htmlspecialchars($_SESSION['name'], ENT_QUOTES) ?>!</p>
+	</header>
+	<div id="homeMain" class="py-5 px-sm-0 px-3">
+		<div class="container welcome shadow rounded px-sm-4 px-3 py-3 mb-4">
+			<div class="content">
+				<h2>Home Page</h2>
+				<p class="mb-3">Welcome back, <?= htmlspecialchars($_SESSION['name'], ENT_QUOTES) ?>!</p>
+			</div>
+			<div class="action">
+				<a href="../create_ballot/create_ballot.php" class="createbtn px-sm-3 py-sm-2 p-2 btn rounded shadow-sm me-2"><i class="fa-solid fa-plus me-1"></i>Create A New Ballot</a>
+				<a href="utils/logout.php" class="logoutbtn px-sm-3 py-sm-2 p-2 btn rounded shadow-sm"><i class="fas fa-sign-out-alt me-1"></i>Logout</a>
+			</div>
 		</div>
-		<div class="action">
-			<a href="../create_ballot/create_ballot.php">Create Election</a>
+
+
+		<div class="organize container shadow rounded px-0 my-5">
+			<div class="container-header px-sm-4 px-3 py-3">
+				<h3 class="mb-0">Your ballots</h3>
+			</div>
+			<div class="content row px-sm-4 py-sm-4 px-3 py-3 g-3">
+				<?php
+				require_once './components/organize.php';
+				foreach ($organize as $ballot) {
+					echo OrganizeBallot($ballot);
+				}
+				?>
+			</div>
 		</div>
-		<div class="organize">
-			<h3>Your election</h3>
-			<?php
-			require_once './components/organize.php';
-			foreach ($organize as $ballot) {
-				echo OrganizeBallot($ballot);
-			}
-			?>
-		</div>
-		
-		<div class="voter">
-		<h3>You are a voter of</h3>
+
+		<div class="voter container shadow rounded px-0">
+			<div class="container-header px-sm-4 px-3 py-3">
+				<h3 class="mb-0">You are a voter of</h3>
+			</div>
+			<div class="content row px-sm-4 py-sm-4 px-3 py-3 g-3">
 			<?php
 			require_once './components/voter.php';
 			foreach ($voter as $ballot) {
 				echo VoterBallot($ballot);
 			}
 			?>
+			</div>
 		</div>
 	</div>
 	<div id="ballotQuestions"></div>
@@ -101,6 +116,9 @@ usort($voter, function ($a, $b) {
 	<div id="voteMessage"></div>
 
 	<div id="statContainer"></div>
+	<footer class="container py-3">
+        <p class="mb-0">Copyright @ <?php echo date('Y');?> <b>OnlineBallot</b>. All Rights Reserved.</p>
+    </footer>
 </body>
 
 </html>
@@ -257,9 +275,9 @@ usort($voter, function ($a, $b) {
 				if (!acc.assign) {
 					acc.assign = [];
 				}
-				if(parts[0] === 'ballotId' || parts[0] === 'email') {
+				if (parts[0] === 'ballotId' || parts[0] === 'email') {
 					acc[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
-				}else {
+				} else {
 					acc.assign.push(decodeURIComponent(parts[1]));
 				}
 				return acc;
@@ -278,4 +296,3 @@ usort($voter, function ($a, $b) {
 		})
 	})
 </script>
-
