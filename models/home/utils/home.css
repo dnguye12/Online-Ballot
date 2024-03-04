@@ -95,7 +95,7 @@ header .logoutbtn:hover {
 }
 
 #homeMain .organize .ballot_body button, #homeMain .voter .ballot_body button {
-    font-size: 15px;
+    font-size: 14px;
     transition: 350ms
 }
 

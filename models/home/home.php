@@ -141,6 +141,22 @@ usort($voter, function ($a, $b) {
 	})
 
 	$(document).ready(function() {
+		$('.delete-ballot').on('click', function() {
+			let ballot = $(this).data('ballot');
+			$.ajax({
+				url: './utils/deleteBallot.php',
+				type: 'POST',
+				data: {
+					"ballot": ballot
+				},
+			}).done(function(e) {
+				$('#homeMain').hide();
+				$('#organizeMessage').html(e);
+			})
+		})
+	})
+
+	$(document).ready(function() {
 		$('.ballot-question').on('click', function() {
 			let ballot = $(this).data('ballot');
 			$.ajax({

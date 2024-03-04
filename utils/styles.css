@@ -23,9 +23,19 @@ body {
     font-size: 16px;
 }
 
-.alertConfirmBtn {
-    font-size: 15px !important;
-    font-weight: 600 !important;
-    transition: 350ms !important;
-    padding: 8px 16px !important;
+.alertErrorConfirmBtn {
+    font-size: 15px;
+    font-weight: 600;
+    transition: 350ms;
+    padding: 6px 12px;
+    background-color: var(--col-red);
+    color: var(--col-white);
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+
+.alertErrorConfirmBtn:hover {
+    background-color: #d9534f;
 }
