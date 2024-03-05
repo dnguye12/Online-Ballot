@@ -128,16 +128,20 @@ usort($voter, function ($a, $b) {
 	$(document).ready(function() {
 		$('.close-ballot').on('click', function() {
 			let ballot = $(this).data('ballot');
-			$.ajax({
-				url: './utils/closeBallot.php',
-				type: 'POST',
-				data: {
-					"ballot": ballot
-				},
-			}).done(function(e) {
-				$('#homeMain').hide();
-				$('#organizeMessage').html(e);
-			})
+			AlertWarning("Close ballot confirmation", "Are you sure you want to proceed?", function() {
+				$.ajax({
+					url: './utils/closeBallot.php',
+					type: 'POST',
+					data: {
+						"ballot": ballot
+					},
+				}).done(function(e) {
+					let helper = JSON.parse(e);
+					AlertInfo('Close ballot success', `You have successfully closed ${helper.title}` , function() {
+						location.reload();
+					});
+				})
+			});
 		})
 	})
 

@@ -20,7 +20,13 @@
         }
 
         saveDataToFile($filePath, $ballots);
+        /*
         echo 'You have successfully closed ' .  $res['electionTitle'] ;
-        echo '<br><a href="./home.php">Go back to Home</a>';
+        echo '<br><a href="./home.php">Go back to Home</a>';*/
+        echo json_encode([
+            'id' =>  $res["id"],
+            'title' => $res["electionTitle"]
+        ]);
+        exit;
     }
 ?>
