@@ -7,7 +7,7 @@ function VoterBallot($ballot)
 
     $disableButton = ($myVote <= 0 or $ballot['status'] != "Running");
 ?>
-    <div class="col-12 col-md-6 col-xl-4">
+    <div class="col-12 col-md-6 col-xl-4"  id=<?php echo "voter_" . $ballot["id"]?>>
         <div class="ballot_voter border rounded shadow-sm p-3">
             <div class="ballot_header">
                 <?php

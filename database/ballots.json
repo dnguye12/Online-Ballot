@@ -1,5 +1,5 @@
-[
-    {
+{
+    "0": {
         "id": "election65d9a916efaef",
         "electionTitle": "My election",
         "createBy": 3,
@@ -42,7 +42,7 @@
             "cac@mail.com": 0
         }
     },
-    {
+    "1": {
         "id": "election65d9a93711263",
         "electionTitle": "My election 2",
         "createBy": 3,
@@ -85,7 +85,7 @@
             "cac@mail.com": 0
         }
     },
-    {
+    "2": {
         "id": "election65d9a93e9352d",
         "electionTitle": "My election 3",
         "createBy": 3,
@@ -128,44 +128,7 @@
             "cac@mail.com": 0
         }
     },
-    {
-        "id": "election65df3e340d575",
-        "electionTitle": "Huy Election",
-        "createBy": 1,
-        "groupName": "Huy",
-        "startDate": "2024-02-28 15:07:00",
-        "endDate": "2024-03-10 15:07:00",
-        "status": "Closed",
-        "questions": [
-            {
-                "title": "q1",
-                "choices": {
-                    "c1": 0,
-                    "c2": 0,
-                    "c3": 0
-                }
-            },
-            {
-                "title": "q2",
-                "choices": {
-                    "c1": 0,
-                    "c2": 0,
-                    "q3": 0
-                }
-            }
-        ],
-        "voterList": {
-            "huy@mail.com": 0,
-            "cac@mail.com": 1,
-            "my@mail.com": 1
-        },
-        "votedList": {
-            "huy@mail.com": 0,
-            "cac@mail.com": 0,
-            "my@mail.com": 0
-        }
-    },
-    {
+    "4": {
         "id": "election65df686e306a4",
         "electionTitle": "Huy Election 2",
         "createBy": 1,
@@ -201,7 +164,7 @@
             "my@mail.com": 0
         }
     },
-    {
+    "5": {
         "id": "election65e174b3db517",
         "electionTitle": "Huy Election 3",
         "createBy": 1,
@@ -237,4 +200,4 @@
             "my@mail.com": 0
         }
     }
-]
+}

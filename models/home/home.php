@@ -99,12 +99,12 @@ usort($voter, function ($a, $b) {
 				<h3 class="mb-0">You are a voter of</h3>
 			</div>
 			<div class="content row px-sm-4 py-sm-4 px-3 py-3 g-3">
-			<?php
-			require_once './components/voter.php';
-			foreach ($voter as $ballot) {
-				echo VoterBallot($ballot);
-			}
-			?>
+				<?php
+				require_once './components/voter.php';
+				foreach ($voter as $ballot) {
+					echo VoterBallot($ballot);
+				}
+				?>
 			</div>
 		</div>
 	</div>
@@ -117,12 +117,13 @@ usort($voter, function ($a, $b) {
 
 	<div id="statContainer"></div>
 	<footer class="container py-3">
-        <p class="mb-0">Copyright @ <?php echo date('Y');?> <b>OnlineBallot</b>. All Rights Reserved.</p>
-    </footer>
+		<p class="mb-0">Copyright @ <?php echo date('Y'); ?> <b>OnlineBallot</b>. All Rights Reserved.</p>
+	</footer>
 </body>
 
 </html>
 <?php include '../../utils/foot.php' ?>
+<script src="../../utils/alertHandler.js"></script>
 <script>
 	$(document).ready(function() {
 		$('.close-ballot').on('click', function() {
@@ -143,16 +144,22 @@ usort($voter, function ($a, $b) {
 	$(document).ready(function() {
 		$('.delete-ballot').on('click', function() {
 			let ballot = $(this).data('ballot');
-			$.ajax({
-				url: './utils/deleteBallot.php',
-				type: 'POST',
-				data: {
-					"ballot": ballot
-				},
-			}).done(function(e) {
-				$('#homeMain').hide();
-				$('#organizeMessage').html(e);
-			})
+			AlertWarning("Delete confirmation", "Are you sure you want to proceed?", function() {
+				$.ajax({
+					url: './utils/deleteBallot.php',
+					type: 'POST',
+					data: {
+						"ballot": ballot
+					},
+				}).done(function(e) {
+					let helper = JSON.parse(e);
+					console.log(helper);
+					AlertInfo('Delete success', `You have successfully deleted ${helper.title}` , function() {
+						$('#organize_' + helper.id).remove();
+						$('#voter_' + helper.id).remove();
+					});
+				})
+			});
 		})
 	})
 

@@ -3,7 +3,7 @@ function OrganizeBallot($ballot)
 {
     ob_start();
 ?>
-<div class="col-12 col-md-6 col-xl-4">
+<div class="col-12 col-md-6 col-xl-4" id=<?php echo "organize_" . $ballot["id"]?>>
     <div class="ballot_org border rounded shadow-sm p-3">
         <div class="ballot_header">
             <?php
