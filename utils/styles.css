@@ -6,6 +6,8 @@
     --col-white: #fff;
     --col-black: #212529;
     --col-red: #dc3545;
+    --col-green: #14A44D;
+    --col-blue: #3B71CA;
 }
 
 body {
@@ -37,5 +39,74 @@ body {
 }
 
 .alertErrorConfirmBtn:hover {
-    background-color: #d9534f;
+    transform: scale(1.1);
+}
+
+.alertWarningConfirmBtn {
+    font-size: 15px;
+    font-weight: 600;
+    transition: 350ms;
+    padding: 6px 12px;
+    background-color: var(--col-orange);
+    color: var(--col-white);
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+
+.alertWarningConfirmBtn:hover {
+    transform: scale(1.1);
+}
+
+.alertWarningCancelBtn {
+    font-size: 15px;
+    font-weight: 600;
+    transition: 350ms;
+    padding: 6px 12px;
+    background-color: var(--col-black);
+    color: var(--col-white);
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    margin-left: 6px;
+}
+
+.alertWarningCancelBtn:hover {
+    transform: scale(1.1);
+}
+
+.alertSuccessConfirmBtn {
+    font-size: 15px;
+    font-weight: 600;
+    transition: 350ms;
+    padding: 6px 12px;
+    background-color: var(--col-green);
+    color: var(--col-white);
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+
+.alertSuccessConfirmBtn:hover {
+    transform: scale(1.1);
+}
+
+.alertInfoConfirmBtn {
+    font-size: 15px;
+    font-weight: 600;
+    transition: 350ms;
+    padding: 6px 12px;
+    background-color: var(--col-blue);
+    color: var(--col-white);
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+
+.alertInfoConfirmBtn:hover {
+    transform: scale(1.1);
 }

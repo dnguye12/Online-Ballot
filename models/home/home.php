@@ -137,7 +137,7 @@ usort($voter, function ($a, $b) {
 					},
 				}).done(function(e) {
 					let helper = JSON.parse(e);
-					AlertInfo('Close ballot success', `You have successfully closed ${helper.title}` , function() {
+					AlertSuccess('Close ballot success', `You have successfully closed ${helper.title}` , function() {
 						location.reload();
 					});
 				})
@@ -158,7 +158,7 @@ usort($voter, function ($a, $b) {
 				}).done(function(e) {
 					let helper = JSON.parse(e);
 					console.log(helper);
-					AlertInfo('Delete success', `You have successfully deleted ${helper.title}` , function() {
+					AlertSuccess('Delete success', `You have successfully deleted ${helper.title}` , function() {
 						$('#organize_' + helper.id).remove();
 						$('#voter_' + helper.id).remove();
 					});
