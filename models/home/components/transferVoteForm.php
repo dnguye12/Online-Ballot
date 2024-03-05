@@ -33,7 +33,7 @@ echo '</form>';
             let ballot = <?php echo json_encode($ballot); ?>;
 
             let voteCount = parseInt(ballot["voterList"][selectedEmailOne]);
-            $('.dynamic-selector').remove();
+            $('.dynamic-field').remove();
             if (voteCount >= 1) {
                 addDynamicSelector(selectedEmailOne, voteCount, ballot);
             }
@@ -59,7 +59,7 @@ echo '</form>';
     function addDynamicSelector(selectedEmailOne, voteCount, ballot) {
         let helper = "<fieldset class='dynamic-field dynamicOne'><legend>Pick the first person to give 1 vote:</legend>";
         $.each(ballot['voterList'], function(email, count) {
-            if (email !== selectedEmailOne && count < 2) {
+            if (email !== selectedEmailOne && count < 2 && ballot['votedList'][email] < 2) {
                 helper += "<input type='radio' name='transferPassTwo' value='" + email + "' class='transfer-checkbox-two'>" + email + "</input>";
             }
         })
@@ -69,7 +69,7 @@ echo '</form>';
         if (voteCount == 2) {
             helper = "<fieldset class='dynamic-field dynamicTwo'><legend>Pick the second person to give 1 vote:</legend>";
             $.each(ballot['voterList'], function(email, count) {
-                if (email !== selectedEmailOne) {
+                if (email !== selectedEmailOne && count < 2 && ballot['votedList'][email] < 2) {
                     helper += "<input type='radio' name='transferPassThree' value='" + email + "' class='transfer-checkbox-three'>" + email + "</input>";
                 }
             })
@@ -79,7 +79,7 @@ echo '</form>';
     }
 
     function updateSelectionsTwo(selectedEmailTwo, ballot) {
-        if(ballot['voterList'][selectedEmailTwo] == 1) {
+        if(ballot['voterList'][selectedEmailTwo] == 1 || ballot['votedList'][selectedEmailTwo] == 1) {
             $('input[name="transferPassThree"]').each(function() {
                 let email = $(this).val();
                 if(email === selectedEmailTwo) {
@@ -90,7 +90,7 @@ echo '</form>';
     }
 
     function updateSelectionsThree(selectedEmailThree, ballot) {
-        if(ballot['voterList'][selectedEmailThree] == 1) {
+        if(ballot['voterList'][selectedEmailThree] == 1 || ballot['votedList'][selectedEmailThree] == 1) {
             $('input[name="transferPassTwo"]').each(function() {
                 let email = $(this).val();
                 if(email === selectedEmailThree) {

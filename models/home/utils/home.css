@@ -13,17 +13,17 @@ header .logo {
 
 header .logoutbtn {
     color: var(--col-black);
-        font-size: 15px;
-        font-weight: 600;
-        border: 1px solid var(--col-black);
-        transition: 350ms;
-        border-radius: 3px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid var(--col-black);
+    transition: 350ms;
+    border-radius: 3px;
 }
 
 header .logoutbtn:hover {
     background-color: var(--col-black);
-        color: var(--col-white);
-        border: 1px solid var(--col-black);
+    color: var(--col-white);
+    border: 1px solid var(--col-black);
 }
 
 #homeMain .welcome .content h2 {
@@ -67,25 +67,29 @@ header .logoutbtn:hover {
     border: 1px solid var(--col-black);
 }
 
-#homeMain .organize .container-header, #homeMain .voter .container-header {
+#homeMain .organize .container-header,
+#homeMain .voter .container-header {
     background-color: var(--col-black);
     color: var(--col-white);
     overflow: hidden;
     border-radius: .25rem .25rem 0 0;
 }
 
-#homeMain .organize .container-header h3, #homeMain .voter .container-header h3 {
+#homeMain .organize .container-header h3,
+#homeMain .voter .container-header h3 {
     font-size: 18px;
     font-weight: 600;
 }
 
-#homeMain .organize .ballot_header h4, #homeMain .voter .ballot_header h4{
+#homeMain .organize .ballot_header h4,
+#homeMain .voter .ballot_header h4 {
     font-size: 22px;
     font-weight: 600;
     color: var(--col-black);
 }
 
-#homeMain .organize .ballot_header p, #homeMain .voter .ballot_header p {
+#homeMain .organize .ballot_header p,
+#homeMain .voter .ballot_header p {
     color: var(--col-gray-dark);
     font-weight: 500;
 }
@@ -94,9 +98,65 @@ header .logoutbtn:hover {
     font-weight: 400;
 }
 
-#homeMain .organize .ballot_body button, #homeMain .voter .ballot_body button {
+#homeMain .organize .ballot_body button,
+#homeMain .voter .ballot_body button {
     font-size: 14px;
     transition: 350ms
+}
+
+#voteFormContainer #voteForm input[type=radio] {
+    display: none;
+}
+
+#voteFormContainer #voteForm label {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 350ms;
+}
+
+#voteFormContainer #voteForm label:hover {
+    font-size: 16px;
+    border: 1px solid var(--col-black) !important;
+}
+
+#voteFormContainer #voteForm input:checked+label {
+    border-color: var(--col-green) !important;
+    color: var(--col-green) !important;
+    font-size: 16px;
+}
+
+.btnSubmit {
+    background-color: var(--col-orange);
+    color: var(--col-white);
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid var(--col-orange);
+    transition: 350ms;
+    border-radius: 3px;
+}
+
+.btnSubmit:hover {
+    background-color: var(--col-white);
+    color: var(--col-orange);
+    border: 1px solid var(--col-orange);
+}
+
+.btnCancel {
+    color: var(--col-black);
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid var(--col-black);
+    transition: 350ms;
+    border-radius: 3px;
+}
+
+.btnCancel:hover {
+    background-color: var(--col-black);
+    color: var(--col-white);
+    border: 1px solid var(--col-black);
 }
 
 footer {

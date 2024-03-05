@@ -137,7 +137,7 @@ usort($voter, function ($a, $b) {
 					},
 				}).done(function(e) {
 					let helper = JSON.parse(e);
-					AlertSuccess('Close ballot success', `You have successfully closed ${helper.title}` , function() {
+					AlertSuccess('Close ballot success', `You have successfully closed ${helper.title}`, function() {
 						location.reload();
 					});
 				})
@@ -157,8 +157,7 @@ usort($voter, function ($a, $b) {
 					},
 				}).done(function(e) {
 					let helper = JSON.parse(e);
-					console.log(helper);
-					AlertSuccess('Delete success', `You have successfully deleted ${helper.title}` , function() {
+					AlertSuccess('Delete success', `You have successfully deleted ${helper.title}`, function() {
 						$('#organize_' + helper.id).remove();
 						$('#voter_' + helper.id).remove();
 					});
@@ -265,30 +264,37 @@ usort($voter, function ($a, $b) {
 	$(document).ready(function() {
 		$('.home').on('submit', '#voteForm', function(e) {
 			e.preventDefault();
-			let formData = $(this).serialize();
-			let res = formData.split('&').reduce(function(acc, curr) {
-				let parts = curr.split('=');
-				if (!acc.questions) {
-					acc.questions = [];
-				}
-				if (parts[0] === 'ballotId' || parts[0] === 'email') {
-					acc[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
-				} else {
-					acc.questions.push(decodeURIComponent(parts[1]));
-				}
-				return acc;
-			}, {})
 
-			$.ajax({
-				url: './utils/saveVote.php',
-				type: 'POST',
-				data: {
-					"res": res
-				},
-			}).done(function(e) {
-				$('#homeMain').hide();
-				$('#voteMessage').html(e);
-			})
+			let formData = $(this).serialize();
+			AlertWarning("Confirm confirmation", "Are you sure you want to submit your vote?", function() {
+				let res = formData.split('&').reduce(function(acc, curr) {
+					let parts = curr.split('=');
+					if (!acc.questions) {
+						acc.questions = [];
+					}
+					if (parts[0] === 'ballotId' || parts[0] === 'email') {
+						acc[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
+					} else {
+						acc.questions.push(decodeURIComponent(parts[1]));
+					}
+					return acc;
+				}, {});
+
+				$.ajax({
+					url: './utils/saveVote.php',
+					type: 'POST',
+					data: {
+						"res": res
+					},
+				}).done(function(e) {
+					console.log(e);
+					let helper = JSON.parse(e);
+					AlertSuccess('Vote success', `You have successfully voted for ${helper.title}`, function() {
+						location.reload();
+					});
+				})
+			});
+
 		})
 	})
 

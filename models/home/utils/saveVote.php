@@ -31,7 +31,10 @@
         }
 
         saveDataToFile($filePath, $ballots);
-        echo 'You have successfully voted for ' .  $ballot_title ;
-        echo '<br><a href="./home.php">Go back to Home</a>';
+        echo json_encode([
+            'id' =>  $res_ballotId,
+            'title' => $ballot_title
+        ]);
+        exit;
     }
 ?>

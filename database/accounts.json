@@ -46,5 +46,11 @@
         "username": "huy3",
         "password": "$2y$10$hol6fq3LRdaWigzzMNoa3ed0cPtjtNatYhUOd7dkMo5AZAi\/Tf2Cy",
         "email": "huy3@mail.com"
+    },
+    {
+        "id": 9,
+        "username": "otto",
+        "password": "$2y$10$hol6fq3LRdaWigzzMNoa3ed0cPtjtNatYhUOd7dkMo5AZAi\/Tf2Cy",
+        "email": "otto@mail.com"
     }
 ]
