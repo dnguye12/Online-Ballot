@@ -58,7 +58,7 @@ usort($voter, function ($a, $b) {
 
 ?>
 
-<body class="home">
+<body class="home pb-5">
 	<header>
 		<nav class="navbar shadow-sm">
 			<div class="container">
@@ -116,8 +116,8 @@ usort($voter, function ($a, $b) {
 	<div id="voteMessage"></div>
 
 	<div id="statContainer"></div>
-	<footer class="container py-3">
-		<p class="mb-0">Copyright @ <?php echo date('Y'); ?> <b>OnlineBallot</b>. All Rights Reserved.</p>
+	<footer class="py-3">
+		<p class="mb-0 container ">Copyright @ <?php echo date('Y'); ?> <b>OnlineBallot</b>. All Rights Reserved.</p>
 	</footer>
 </body>
 

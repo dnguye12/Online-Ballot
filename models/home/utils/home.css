@@ -247,6 +247,10 @@ header .logoutbtn:hover {
 footer {
     color: var(--col-gray);
     font-size: 14px;
+    position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 53px;
 }
 
 footer b {

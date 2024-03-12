@@ -12,6 +12,8 @@
 
 body {
     font-family: "Inter", sans-serif !important;
+    min-height: 100vh;
+    position: relative;
 }
 
 .alertTitle {
