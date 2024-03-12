@@ -8,22 +8,24 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 $ballot = $_POST["ballot"];
-
+echo "<div class='container my-5 shadow rounded border p-sm-4 p-3 transfer_vote'>";
 echo "<h2>Transfer vote</h2>";
 echo '<form id="transferForm">';
 echo "<input type='hidden' name='ballotId' value=" . $ballot['id'] . ">";
-
-echo "<fieldset>";
-echo "<legend>Pick the person to declare absent.</legend>";
+echo "<legend class='mb-1'>Pick the person to declare absent.</legend>";
 foreach ($ballot['voterList'] as $k => $v) {
     if ($v > 0) {
-        echo "<input type='radio' name='transferPassOne' value='$k' class='transfer-checkbox-one'>" . $k . "</input>";
+        echo "<div class='mb-1'>";
+        echo "<input type='radio' name='transferPassOne' value='$k' class='transfer-checkbox-one me-1'>" . $k . "</input>";
+        echo "</div>";
     }
 }
-echo "</fieldset>";
-echo '<input type="submit" value="Submit Transfer" id="submitTransfer" disabled>';
-echo '<button type="button" onclick="window.location.href=\'../home/home.php\'">Cancel</button>';
+echo "<div class='mt-3'>";
+echo '<input type="submit" value="Submit Transfer" id="submitTransfer" disabled class="btn shadow-sm btnSubmit me-1">';
+echo '<button type="button" class="btnCancel btn shadow-sm" onclick="window.location.href=\'../home/home.php\'">Cancel</button>';
+echo "</div>";
 echo '</form>';
+echo "</div>";
 ?>
 
 <script>
@@ -57,24 +59,28 @@ echo '</form>';
     });
 
     function addDynamicSelector(selectedEmailOne, voteCount, ballot) {
-        let helper = "<fieldset class='dynamic-field dynamicOne'><legend>Pick the first person to give 1 vote:</legend>";
+        let helper = "<fieldset class='dynamic-field dynamicOne mb-1'><legend>Pick the first person to give 1 vote:</legend>";
         $.each(ballot['voterList'], function(email, count) {
             if (email !== selectedEmailOne && count < 2 && ballot['votedList'][email] < 2) {
-                helper += "<input type='radio' name='transferPassTwo' value='" + email + "' class='transfer-checkbox-two'>" + email + "</input>";
+                helper += "<div class='mb-1'>";
+                helper += "<input type='radio' name='transferPassTwo' value='" + email + "' class='transfer-checkbox-two me-1'>" + email + "</input>";
+                helper += "</div>";
             }
         })
         helper += "</fieldset>";
-        $('#transferForm').append(helper);
+        $(helper).insertBefore('#submitTransfer');
 
         if (voteCount == 2) {
-            helper = "<fieldset class='dynamic-field dynamicTwo'><legend>Pick the second person to give 1 vote:</legend>";
+            helper = "<fieldset class='dynamic-field dynamicTwo mb-1'><legend>Pick the second person to give 1 vote:</legend>";
             $.each(ballot['voterList'], function(email, count) {
                 if (email !== selectedEmailOne && count < 2 && ballot['votedList'][email] < 2) {
-                    helper += "<input type='radio' name='transferPassThree' value='" + email + "' class='transfer-checkbox-three'>" + email + "</input>";
+                    helper += "<div class='mb-1'>";
+                    helper += "<input type='radio' name='transferPassThree' value='" + email + "' class='transfer-checkbox-three me-1'>" + email + "</input>";
+                    helper += "</div>";
                 }
             })
             helper += "</fieldset>";
-            $('#transferForm').append(helper);
+            $(helper).insertBefore('#submitTransfer');
         }
     }
 

@@ -233,6 +233,17 @@ header .logoutbtn:hover {
     color: var(--col-gray);
 }
 
+.transfer_vote h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--col-black);
+}
+
+.transfer_vote #transferForm legend {
+    color: var(--col-gray);
+    font-size: 16px;
+}
+
 footer {
     color: var(--col-gray);
     font-size: 14px;
