@@ -62,7 +62,7 @@ usort($voter, function ($a, $b) {
 	<header>
 		<nav class="navbar shadow-sm">
 			<div class="container">
-				<a href="#" class="logo">OnlineBallot</a>
+				<a href="." class="logo">OnlineBallot</a>
 				<a href="utils/logout.php" class="logoutbtn nav-link px-sm-3 py-sm-2 me-sm-2 p-2 shadow-sm"><i class="fas fa-sign-out-alt me-1"></i>Logout</a>
 			</div>
 		</nav>

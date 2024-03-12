@@ -104,11 +104,32 @@ header .logoutbtn:hover {
     transition: 350ms
 }
 
-#voteFormContainer #voteForm input[type=radio] {
+.vote_header h4 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--col-black);
+}
+
+.vote_header p {
+    color: var(--col-gray-dark);
+    font-weight: 500;
+}
+
+.voteFormContainer #voteForm legend {
+    font-size: 14px;
+}
+
+.voteFormContainer #voteForm legend b{
+    font-weight: 600;
+    color: var(--col-black);
+    font-size: 16px;
+}
+
+.voteFormContainer #voteForm input[type=radio] {
     display: none;
 }
 
-#voteFormContainer #voteForm label {
+.voteFormContainer #voteForm label {
     font-weight: 600;
     font-size: 14px;
     line-height: 16px;
@@ -117,15 +138,48 @@ header .logoutbtn:hover {
     transition: 350ms;
 }
 
-#voteFormContainer #voteForm label:hover {
+.voteFormContainer #voteForm label:hover {
     font-size: 16px;
     border: 1px solid var(--col-black) !important;
 }
 
-#voteFormContainer #voteForm input:checked+label {
+.voteFormContainer #voteForm input:checked+label {
     border-color: var(--col-green) !important;
     color: var(--col-green) !important;
     font-size: 16px;
+}
+
+.questions_header h4 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--col-black);
+}
+
+.questions_header p {
+    color: var(--col-gray-dark);
+    font-weight: 500;
+}
+
+.questions_container legend {
+    font-size: 14px;
+}
+
+.questions_container legend b{
+    font-weight: 600;
+    color: var(--col-black);
+    font-size: 16px;
+}
+
+.questions_container input[type=radio] {
+    display: none;
+}
+
+.questions_container label {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    border-radius: 10px;
+    transition: 350ms;
 }
 
 .btnSubmit {
@@ -157,6 +211,26 @@ header .logoutbtn:hover {
     background-color: var(--col-black);
     color: var(--col-white);
     border: 1px solid var(--col-black);
+}
+
+.stat-holder .overview i {
+    font-size: 36px;
+}
+
+.stat-holder .questions .question_header h3 {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--col-black);
+}
+
+.stat-holder .questions .question_header p {
+    color: var(--col-black);
+    font-size: 16px;
+}
+
+.stat-holder .questions .question_body p {
+    font-size: 14px;
+    color: var(--col-gray);
 }
 
 footer {
