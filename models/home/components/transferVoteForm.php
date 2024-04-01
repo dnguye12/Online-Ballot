@@ -13,6 +13,8 @@ echo "<h2>Transfer vote</h2>";
 echo '<form id="transferForm">';
 echo "<input type='hidden' name='ballotId' value=" . $ballot['id'] . ">";
 echo "<legend class='mb-1'>Pick the person to declare absent.</legend>";
+
+// Pour chaque électeur potentiel, crée une option de transfert si elle a des votes à transférer.
 foreach ($ballot['voterList'] as $k => $v) {
     if ($v > 0) {
         echo "<div class='mb-1'>";
@@ -20,6 +22,7 @@ foreach ($ballot['voterList'] as $k => $v) {
         echo "</div>";
     }
 }
+// Boutons pour soumettre le transfert ou annuler l'action.
 echo "<div class='mt-3'>";
 echo '<input type="submit" value="Submit Transfer" id="submitTransfer" disabled class="btn shadow-sm btnSubmit me-1">';
 echo '<button type="button" class="btnCancel btn shadow-sm" onclick="window.location.href=\'../home/home.php\'">Cancel</button>';
@@ -30,6 +33,7 @@ echo "</div>";
 
 <script>
     $(document).ready(function() {
+        // Code pour ajouter dynamiquement des sélecteurs en fonction du nombre de votes à transférer.
         $('input[name="transferPassOne"]').change(function() {
             let selectedEmailOne = $(this).val();
             let ballot = <?php echo json_encode($ballot); ?>;
@@ -41,6 +45,7 @@ echo "</div>";
             }
         });
 
+        // Gère les changements sur les sélecteurs dynamiques pour les transferts de votes.
         $('#transferForm').on('change', 'input[name="transferPassTwo"]', function() {
             let selectedEmailTwo = $('input[name="transferPassTwo"]:checked').val();
             let ballot = <?php echo json_encode($ballot); ?>;
@@ -58,6 +63,7 @@ echo "</div>";
         });
     });
 
+    // Ajoute des champs de sélection dynamiques pour choisir les électeurs à qui transférer les votes.
     function addDynamicSelector(selectedEmailOne, voteCount, ballot) {
         let helper = "<fieldset class='dynamic-field dynamicOne mb-1'><legend>Pick the first person to give 1 vote:</legend>";
         $.each(ballot['voterList'], function(email, count) {
@@ -70,6 +76,7 @@ echo "</div>";
         helper += "</fieldset>";
         $(helper).insertBefore('#submitTransfer');
 
+        //Si cet utilisateur peut transférer 2 votes, ajoutez un autre champ
         if (voteCount == 2) {
             helper = "<fieldset class='dynamic-field dynamicTwo mb-1'><legend>Pick the second person to give 1 vote:</legend>";
             $.each(ballot['voterList'], function(email, count) {
@@ -84,6 +91,7 @@ echo "</div>";
         }
     }
 
+    // Met à jour les sélections en fonction des choix de l'utilisateur.
     function updateSelectionsTwo(selectedEmailTwo, ballot) {
         if(ballot['voterList'][selectedEmailTwo] == 1 || ballot['votedList'][selectedEmailTwo] == 1) {
             $('input[name="transferPassThree"]').each(function() {
@@ -106,6 +114,7 @@ echo "</div>";
         }
     }
 
+    // Active ou désactive le bouton de soumission en fonction des choix de l'utilisateur.
     function updateSubmitButtons() {
         let hasTwoSelected = $('input[name="transferPassTwo"]:checked').length > 0;
         let hasThreeSelected = $('input[name="transferPassThree"]:checked').length > 0 || $('input[name="transferPassThree"]').length === 0;

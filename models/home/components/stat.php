@@ -7,12 +7,14 @@ if (!isset($_SESSION['loggedin'])) {
 
 $ballot = $_POST["ballot"];
 
+// Initialisation des variables pour calculer les statistiques
 $ballot_id = $ballot['id'];
 $totalVote = 0;
 $castedVote = 0;
 $questionCount = count($ballot['questions']);
 $optionCount = 0;
 
+// Calcul du nombre total de votes possibles et des votes déjà effectués
 foreach ($ballot['voterList'] as $k => $v) {
     $totalVote += $v;
 }
@@ -21,14 +23,15 @@ foreach ($ballot['votedList'] as $k => $v) {
     $castedVote += $v;
 }
 
+// Calcul du nombre total d'options de réponse
 foreach ($ballot['questions'] as $question) {
-    $optionCount += count($question['choices']);
+    $optionCount += count($question['choices']); 
 }
 $totalVote += $castedVote;
-$rate = round((float)$castedVote / (float)$totalVote * 100, 2);
+$rate = round((float)$castedVote / (float)$totalVote * 100, 2); // Pourcentage de participation
 
-$statIdx = 1;
-$questionIdx = 1;
+$statIdx = 1; // Indice pour le tableau des votes par utilisateur
+$questionIdx = 1; // Indice pour numéroté les questions
 ?>
 
 <div class="vote_header container border rounded shadow-sm p-3 my-5">
@@ -41,6 +44,8 @@ $questionIdx = 1;
     echo "</div>";
     ?>
 </div>
+
+<!-- Bloc pour les statistiques générales du scrutin -->
 <div class="stat-holder" id=<?php echo "stat-" . $ballot_id ?>>
 
     <div class="overview container my-5 px-sm-4 py-sm-4 px-3 py-3 rounded shadow-sm border ">
@@ -154,6 +159,7 @@ $questionIdx = 1;
             </tbody>
         </table>
     </div>
+    <!-- Bouton pour retourner à la page d'accueil -->
     <div class="container mt-3 mb-5 p-0">
         <button type="button" onclick="window.location.href='../home/home.php'" class="btnCancel btn shadow-sm"><i class="fa-regular fa-circle-xmark me-1"></i>Back to home</button>
     </div>

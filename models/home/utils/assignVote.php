@@ -10,6 +10,7 @@
         $filePath = '../../../database/ballots.json';
         $ballots = loadDataFromFile($filePath);
 
+        // Récupère les données transmises via POST
         $res = $_POST['res'];
         $res_email = $res['email'];
         $res_ballotId = $res['ballotId'];
@@ -17,15 +18,18 @@
 
         $ballot_title;
 
+        // Parcourt tous les scrutins pour trouver celui concerné
         foreach($ballots as &$ballot) {
             if($ballot['id'] === $res_ballotId) {
                 $ballot_title = $ballot['electionTitle'];
+                // Réinitialise le compteur de votes de l'utilisateur se déclarant absent
                 $ballot['voterList'][$res_email] = 0;
 
+                // Incrémente le compteur de votes des utilisateurs assignés
                 foreach($res_assign as $assign) {
                     $ballot['voterList'][$assign] ++;
                 }
-                break;
+                break; // Sort de la boucle une fois le scrutin trouvé et modifié
                 
             }
             

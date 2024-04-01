@@ -12,6 +12,7 @@ if (!isset($_SESSION['loggedin'])) {
 </head>
 
 <body>
+    <!-- Formulaire pour créer un nouveau scrutin -->
     <form id="createForm">
         <label for="electionTitle">Title of the Election:</label>
         <input type="text" id="electionTitle" name="electionTitle" required><br>
@@ -45,6 +46,7 @@ if (!isset($_SESSION['loggedin'])) {
 </html>
 <?php include '../../utils/foot.php' ?>
 <script>
+    // Empêche la soumission du formulaire avec la touche Entrée pour éviter des envois accidentels
     $('#createForm').on('keyup keypress', function(e) {
         let keyCode = e.keyCode || e.which;
         if (keyCode === 13) {
@@ -63,6 +65,7 @@ if (!isset($_SESSION['loggedin'])) {
             if (endDate < startDate) {
                 alert('The end date must be after the start date.');
             } else {
+                //le formulaire est envoyé via AJAX
                 $.ajax({
                     type: 'POST',
                     url: 'utils/save_ballot.php',
@@ -77,6 +80,7 @@ if (!isset($_SESSION['loggedin'])) {
 
     let questionCount = 0;
 
+    // Ajoute dynamiquement un champ pour une nouvelle question avec des options de réponse
     function addQuestion() {
         questionCount++;
         const questionsContainer = document.getElementById('questionsContainer');
@@ -95,6 +99,7 @@ if (!isset($_SESSION['loggedin'])) {
         addChoice(questionCount); // Automatically add one choice field
     }
 
+    // Ajoute dynamiquement un champ pour une nouvelle option de réponse pour une question spécifique
     function addChoice(questionNumber) {
         const choicesContainer = document.getElementById('choicesContainer' + questionNumber);
         const choiceCount = choicesContainer.childElementCount + 1;
@@ -109,6 +114,7 @@ if (!isset($_SESSION['loggedin'])) {
 
     let voterCount = 0;
 
+    // Ajoute dynamiquement un champ pour entrer l'email d'un votant pour lui ajouter a ce scrutin
     function addVoter() {
         voterCount++;;
         const votersContainer = document.getElementById('votersContainer');
@@ -122,6 +128,7 @@ if (!isset($_SESSION['loggedin'])) {
         votersContainer.appendChild(voterDiv);
     }
 
+    // Supprime dynamiquement un élément (question, choix de réponse, email de votant) du formulaire
     function deleteElement(id) {
         const element = document.getElementById(id);
         if (element) {

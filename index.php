@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Page d'accueil du site -->
 <head>
-    <?php include 'utils/head.php'; ?>
+    <!-- J'utilise la même <head> pour chaque page -->
+    <?php include './utils/head.php'; ?>
+
+    <!-- Css pour index.php -->
     <link href="./utils/index.css" rel="stylesheet">
 </head>
-
-
 <body>
-
+    <!-- responsive navbar -->
     <header>
         <nav class="navbar navbar-expand-sm shadow-sm">
             <div class="container">
@@ -28,6 +30,8 @@
                 </div>
             </div>
         </nav>
+
+        <!-- Hero section -->
         <div class="container hero">
             <div class="row d-flex flex-column-reverse flex-md-row py-5 align-items-center">
                 <div class="col-md-6 col-12">
@@ -45,6 +49,8 @@
             </div>
         </div>
     </header>
+
+    <!-- Section des fonctionnalités du site avec Gridbox -->
     <div class="features py-5">
         <div class="container text-center">
             <h3 class="mb-4">Take your Ballot to the Next Level</h3>
@@ -92,9 +98,10 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
+
+    <!-- footer -->
     <footer class="container py-3">
         <p class="mb-0">Copyright @ <?php echo date('Y');?> <b>OnlineBallot</b>. All Rights Reserved.</p>
     </footer>

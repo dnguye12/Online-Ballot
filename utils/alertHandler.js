@@ -1,3 +1,5 @@
+//Components pour l'utilisation de SweetAlert2 bibliothèque
+
 function AlertError(title, text) {
     Swal.fire({
         title: title,

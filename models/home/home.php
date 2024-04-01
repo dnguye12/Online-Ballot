@@ -13,12 +13,15 @@ if (!isset($_SESSION['loggedin'])) {
 	exit;
 }
 
+// Charge les scrutins
 $filePath = '../../database/ballots.json';
 $ballots = loadDataFromFile($filePath);
 
-$organize = array();
-$voter = array();
+// Initialise des tableaux de scrutins
+$organize = array(); // la tableau de scrutins organisés par l'utilisateur
+$voter = array(); // la tableau de scrutins où l'utilisateur est électeur
 
+// Trie les scrutins en fonction de si l'utilisateur est organisateur ou électeur
 foreach ($ballots as $ballot) {
 	if ($ballot['createBy'] == $_SESSION['id']) {
 		$organize[] = $ballot;
@@ -30,6 +33,7 @@ foreach ($ballots as $ballot) {
 	}
 }
 
+// Trie les scrutins organisés par statut et date de début
 usort($organize, function ($a, $b) {
 	$statusOrder = ['Running' => 1, 'Not started' => 2, 'Other' => 3];
 
@@ -79,13 +83,14 @@ usort($voter, function ($a, $b) {
 			</div>
 		</div>
 
-
+		<!-- Affiche les scrutins organisés par l'utilisateur -->
 		<div class="organize container shadow rounded px-0 my-5">
 			<div class="container-header px-sm-4 px-3 py-3">
 				<h3 class="mb-0">Your ballots</h3>
 			</div>
 			<div class="content row px-sm-4 py-sm-4 px-3 py-3 g-3">
 				<?php
+				// Inclut et affiche les composants des scrutins organisés
 				require_once './components/organize.php';
 				foreach ($organize as $ballot) {
 					echo OrganizeBallot($ballot);
@@ -100,6 +105,7 @@ usort($voter, function ($a, $b) {
 			</div>
 			<div class="content row px-sm-4 py-sm-4 px-3 py-3 g-3">
 				<?php
+				// Inclut et affiche les composants des scrutins où l'utilisateur est électeur
 				require_once './components/voter.php';
 				foreach ($voter as $ballot) {
 					echo VoterBallot($ballot);
@@ -108,6 +114,7 @@ usort($voter, function ($a, $b) {
 			</div>
 		</div>
 	</div>
+	<!-- Zones pour afficher les formulaires et messages supplémentaires -->
 	<div id="ballotQuestions"></div>
 	<div id="transferVoteFormContainer"></div>
 	<div id="organizeMessage"></div>
@@ -125,10 +132,13 @@ usort($voter, function ($a, $b) {
 <?php include '../../utils/foot.php' ?>
 <script src="../../utils/alertHandler.js"></script>
 <script>
+	// Gestion de fermeture d'un scrutin
 	$(document).ready(function() {
 		$('.close-ballot').on('click', function() {
 			let ballot = $(this).data('ballot');
+			// Affiche une alerte de confirmation avant de fermer le scrutin
 			AlertWarning("Close ballot confirmation", "Are you sure you want to proceed?", function() {
+				// Effectue une requête AJAX pour fermer le scrutin
 				$.ajax({
 					url: './utils/closeBallot.php',
 					type: 'POST',
@@ -145,10 +155,13 @@ usort($voter, function ($a, $b) {
 		})
 	})
 
+	// Gestion de suppression d'un scrutin
 	$(document).ready(function() {
 		$('.delete-ballot').on('click', function() {
 			let ballot = $(this).data('ballot');
+			// Affiche une alerte de confirmation avant de supprimer le scrutin
 			AlertWarning("Delete confirmation", "Are you sure you want to proceed?", function() {
+				// Effectue une requête AJAX pour supprimer le scrutin
 				$.ajax({
 					url: './utils/deleteBallot.php',
 					type: 'POST',
@@ -166,6 +179,7 @@ usort($voter, function ($a, $b) {
 		})
 	})
 
+	//Voir un scrutin en détails
 	$(document).ready(function() {
 		$('.ballot-question').on('click', function() {
 			let ballot = $(this).data('ballot');
@@ -182,6 +196,7 @@ usort($voter, function ($a, $b) {
 		})
 	})
 
+ 	//Ouvrir l'interface pour transférer le vote (uniquement pour les organisateurs)
 	$(document).ready(function() {
 		$('.transfer-vote').on('click', function() {
 			let ballot = $(this).data('ballot');
@@ -198,6 +213,7 @@ usort($voter, function ($a, $b) {
 		})
 	})
 
+	// Ouvrir la page de statistiques pour un scrutin
 	$(document).ready(function() {
 		$('.stat').on('click', function() {
 			let ballot = $(this).data('ballot');
@@ -214,6 +230,7 @@ usort($voter, function ($a, $b) {
 		})
 	})
 
+	// Gestion de la soumission du formulaire de transfert de vote
 	$(document).ready(function() {
 		$('.home').on('submit', '#transferForm', function(e) {
 			e.preventDefault();
@@ -231,6 +248,7 @@ usort($voter, function ($a, $b) {
 				return acc;
 			}, {})
 
+			// Envoie les données au serveur via AJAX
 			$.ajax({
 				url: './utils/transferVote.php',
 				type: 'POST',
@@ -245,6 +263,7 @@ usort($voter, function ($a, $b) {
 	})
 </script>
 <script>
+	// Ouvrir la page de vote d'un bulletin de vote
 	$(document).ready(function() {
 		$('.start-vote').on('click', function() {
 			let ballot = $(this).data('ballot');
@@ -261,14 +280,18 @@ usort($voter, function ($a, $b) {
 		})
 	});
 
+	
+	// Gestion de la soumission du formulaire de vote
 	$(document).ready(function() {
 		$('.home').on('submit', '#voteForm', function(e) {
 			e.preventDefault();
-
 			let formData = $(this).serialize();
+			// Demande de confirmation avant de soumettre le vote
 			AlertWarning("Confirm confirmation", "Are you sure you want to submit your vote?", function() {
+				// Transforme les données du formulaire en un objet structuré
 				let res = formData.split('&').reduce(function(acc, curr) {
 					let parts = curr.split('=');
+					
 					if (!acc.questions) {
 						acc.questions = [];
 					}
@@ -280,6 +303,7 @@ usort($voter, function ($a, $b) {
 					return acc;
 				}, {});
 
+				// Envoie les données de vote au serveur
 				$.ajax({
 					url: './utils/saveVote.php',
 					type: 'POST',
@@ -298,6 +322,7 @@ usort($voter, function ($a, $b) {
 		})
 	})
 
+	// Inutile, pour tester
 	$(document).ready(function() {
 		$('.home').on('submit', '#absentForm', function(e) {
 			e.preventDefault();

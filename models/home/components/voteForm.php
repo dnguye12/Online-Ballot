@@ -17,12 +17,19 @@ $ballot = $_POST["ballot"];
     echo "</div>";
     ?>
 </div>
+
+<!-- Container pour le formulaire de vote -->
 <div class="voteFormContainer">
     <form id="voteForm">
         <?php
+        // Variable d'aide pour numéroter les questions
         $helper = 1;
+
+        // Champ caché pour stocker l'ID du scrutin et l'email de l'utilisateur
         echo "<input type='hidden' name='ballotId' value=" . $ballot['id'] . ">";
         echo "<input type='hidden' name='email' value=" . $_SESSION['email'] . ">";
+
+        // Génère dynamiquement les questions et les choix sous forme de boutons radio
         foreach ($ballot['questions'] as $question) {
             echo "<fieldset class='container shadow-sm border rounded p-3 mt-3'>";
             echo "<legend><b>Question $helper </b>: " . $question['title'] . "</legend>";
@@ -37,6 +44,7 @@ $ballot = $_POST["ballot"];
         }
 
         ?>
+        <!-- Boutons pour soumettre ou annuler le vote -->
         <div class="container mt-3 mb-5 p-0">
         <button type="submit" value="Submit" class="btnSubmit btn shadow-sm"><i class="fa-solid fa-check-to-slot me-2"></i>Submit Ballot</button>
         <button type="button" onclick="window.location.href='../home/home.php'" class="btnCancel btn shadow-sm"><i class="fa-regular fa-circle-xmark me-1"></i>Cancel</button>

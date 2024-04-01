@@ -6,14 +6,21 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
+// Traite le formulaire
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Génère un identifiant unique pour le scrutin.
     $electionId = uniqid("election");
+
+    // Récupère le titre de l'élection et le nom du groupe depuis les données POST.
     $electionTitle = $_POST['electionTitle'] ?? '';
     $groupName = $_POST['groupName'] ?? '';
 
+    // Crée des objets DateTime pour les dates de début et de fin.
     $startDate = new DateTime($_POST['startDate']);
     $endDate = new DateTime($_POST['endDate']);
     $nowDate = new DateTime();
+
+    // Détermine le statut du scrutin basé sur les dates.
     $status = "Running";
     if($nowDate  < $startDate) {
         $status = "Not started";
@@ -21,12 +28,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $status = "Closed";
     }
 
+    // Formate les dates pour l'enregistrement.
     $startDateFormatted = $startDate->format('Y-m-d H:i:s');
     $endDateFormatted = $endDate->format('Y-m-d H:i:s');
 
+    // Charge les données existantes.
     $filePath = '../../../database/ballots.json';
     $existingData = loadDataFromFile($filePath);
 
+    // Prépare les nouvelles données du scrutin.
     $newBallotData = [
         "id" => $electionId,
         "electionTitle" => $electionTitle,
@@ -39,28 +49,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "voterList" => [],
         "votedList" => []
     ];
-    $validatedVoterEmails = [];
-    $validatedVoterEmails2 = [];
-    // Iterate over $_POST to find questions and choices
+
+    // Initialisation des tableaux pour les emails des votants validés
+    $validatedVoterEmails = []; //tableu des electeurs
+    $validatedVoterEmails2 = []; // tableau indiquant le nombre de votes effectués par chaque électeur
+    
+    // Itère sur les données POST pour trouver et organiser les questions et leurs choix.
+    // Traite également les emails des votants pour s'assurer qu'ils sont valides.
     foreach ($_POST as $key => $value) {
         if (preg_match('/question(\d+)Title$/', $key, $matches)) {
             $questionIndex = $matches[1];
             $questionTitle = $value;
 
-            // Initialize choices array for this question
             $choices = [];
 
-            // Correct the pattern to match your JavaScript naming convention
             foreach ($_POST as $choiceKey => $choiceValue) {
                 if (preg_match("/question{$questionIndex}Choice(\d+)$/", $choiceKey, $choiceMatches)) {
-                    if (!empty($choiceValue)) { // Ensure the choice is not empty
-                        // Use the matched choice number to ensure the order
+                    if (!empty($choiceValue)) { 
                         $choices[$choiceValue] = 0;
                     }
                 }
             }
-
-            // Re-index choices array to remove any potential gaps
 
             $newBallotData['questions'][] = [
                 "title" => $questionTitle,
@@ -77,10 +86,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $newBallotData['voterList'] = $validatedVoterEmails;
     $newBallotData['votedList'] = $validatedVoterEmails2;
 
-    // Append new ballot data to existing data
-    $existingData[] = $newBallotData; // Append the new ballot to the list
+    // Ajoute le nouveau scrutin aux données existantes et sauvegarde le tout dans le fichier JSON.
+    $existingData[] = $newBallotData;
 
-    // Encode to JSON and save
     saveDataToFile($filePath, $existingData);
 
     echo $electionTitle .  ' have been successfully created!';
