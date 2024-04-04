@@ -34,7 +34,7 @@ $statIdx = 1; // Indice pour le tableau des votes par utilisateur
 $questionIdx = 1; // Indice pour numéroté les questions
 ?>
 
-<div class="vote_header container border rounded shadow-sm p-3 my-5">
+<div class="vote_header container border rounded shadow-sm p-3 my-4 mt-5">
     <?php
     echo '<div class="d-flex align-items-center">';
     echo "<h4 class='mb-0'>" . $ballot["electionTitle"] . "</h4>";
@@ -48,7 +48,7 @@ $questionIdx = 1; // Indice pour numéroté les questions
 <!-- Bloc pour les statistiques générales du scrutin -->
 <div class="stat-holder" id=<?php echo "stat-" . $ballot_id ?>>
 
-    <div class="overview container my-5 px-sm-4 py-sm-4 px-3 py-3 rounded shadow-sm border ">
+    <div class="overview container my-4 px-sm-4 py-sm-4 px-3 py-3 rounded shadow-sm border ">
         <div class="row  g-3 ">
             <div class="col-12 col-md-6 castedVote">
                 <div class="bg-success p-3 rounded shadow-sm d-flex justify-content-between align-items-center">
@@ -88,7 +88,7 @@ $questionIdx = 1; // Indice pour numéroté les questions
             </div>
         </div>
     </div>
-    <div class="questions container my-5 px-sm-4 px-3 rounded shadow-sm border">
+    <div class="questions container my-4 px-sm-4 px-3 rounded shadow-sm border">
         <?php
         foreach ($ballot['questions'] as $question) {
             echo "<div class='my-sm-4 my-3 p-2 " . $question['title'] . "'>";
@@ -132,7 +132,7 @@ $questionIdx = 1; // Indice pour numéroté les questions
         }
         ?>
     </div>
-    <div class="counts container my-5 <?php if ($ballot["createBy"] != $_SESSION["id"]) {
+    <div class="counts container my-4 mb-5 <?php if ($ballot["createBy"] != $_SESSION["id"]) {
                                             echo 'd-none';
                                         } ?>">
         <table class="table table-striped table-hover table-bordered shadow-sm">

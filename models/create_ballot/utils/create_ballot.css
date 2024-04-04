@@ -1,0 +1,67 @@
+@import url('../../../utils/styles.css');
+
+.create_ballot_form h4 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--col-black);
+}
+
+.create_ballot_form label{
+    font-weight: 600;
+    color: var(--col-black);
+    line-height: 16px;
+}
+
+.create_ballot_form input:not([type='submit']) {
+    border: 0px solid transparent;
+    color: var(--col-black);
+    background-color: var(--col-grey);
+    border-radius: 3px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 15px;
+    font-size: 18px;
+    width: 100%;
+}
+
+.create_ballot_form input:not([type='submit'])::placeholder {
+    color: var(--col-gray);
+}
+
+.create_ballot_form .btn-orange {
+    background-color: var(--col-orange);
+    color: var(--col-white);
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid var(--col-orange);
+    transition: 350ms;
+    border-radius: 3px;
+}
+
+.create_ballot_form .btn-orange:hover {
+    background-color: var(--col-white);
+    color: var(--col-orange);
+    border: 1px solid var(--col-orange);
+}
+
+.create_ballot_form .btn-black {
+    color: var(--col-black);
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid var(--col-black);
+    transition: 350ms;
+    border-radius: 3px;
+}
+
+.create_ballot_form .btn-black:hover {
+    background-color: var(--col-black);
+    color: var(--col-white);
+    border: 1px solid var(--col-black);
+}
+
+.create_ballot_form .btn-outline-danger {
+    font-size: 15px;
+    font-weight: 600;
+    transition: 350ms;
+    border-radius: 3px;
+}
