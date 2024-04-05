@@ -91,8 +91,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     saveDataToFile($filePath, $existingData);
 
+    echo '<div class="container border rounded shadow-sm p-3">';
     echo $electionTitle .  ' have been successfully created!';
-    echo '<br><a href="../home/home.php">Go back to Home</a>';
+    echo '<br><a href="../home/home.php" class="btn btn-black mt-2 shadow-sm">Go back to Home</a>';
+    echo '</div>';
     exit;
 }
 ?>

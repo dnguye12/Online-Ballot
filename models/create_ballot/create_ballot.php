@@ -18,17 +18,17 @@ if (!isset($_SESSION['loggedin'])) {
     <div class="container border rounded shadow-sm p-3 mt-5 mb-4">
         <h4 class="mb-0">Create a new Election</h4>
     </div>
-    <form id="createForm " class="container border rounded shadow-sm p-3 mb-5">
+    <form id="createForm" class="container border rounded shadow-sm p-3 mb-5">
         <label for="electionTitle" class="mb-2">Title of the Election:</label>
         <input type="text" id="electionTitle" name="electionTitle" placeholder="Title of the Election" required class="mb-3"><br>
 
         <label for="groupName" class="mb-2">Name of Group / Organization (Optional):</label>
         <input type="text" id="groupName" name="groupName" placeholder="Name of Group / Organization" class="mb-3"><br>
 
-        <label for="startDate" class="mb-2">Start of the Election:</label>
+        <label for="startDate" class="mb-2" required>Start of the Election:</label>
         <input type="datetime-local" id="startDate" name="startDate" class="mb-3"><br>
 
-        <label for="endDate" class="mb-2">End of the Election:</label>
+        <label for="endDate" class="mb-2" required>End of the Election:</label>
         <input type="datetime-local" id="endDate" name="endDate" class="mb-3"><br>
 
         <div id="questionsContainer">
@@ -75,7 +75,7 @@ if (!isset($_SESSION['loggedin'])) {
                 //le formulaire est envoyé via AJAX
                 $.ajax({
                     type: 'POST',
-                    url: 'utils/save_ballot.php',
+                    url: './utils/save_ballot.php',
                     data: $(this).serialize(),
                 }).done(function(e) {
                     $('#createForm').hide();

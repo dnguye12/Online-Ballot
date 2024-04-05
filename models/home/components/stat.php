@@ -7,6 +7,7 @@ if (!isset($_SESSION['loggedin'])) {
 
 $ballot = $_POST["ballot"];
 
+if(!empty($ballot['questions'])) {
 // Initialisation des variables pour calculer les statistiques
 $ballot_id = $ballot['id'];
 $totalVote = 0;
@@ -32,6 +33,7 @@ $rate = round((float)$castedVote / (float)$totalVote * 100, 2); // Pourcentage d
 
 $statIdx = 1; // Indice pour le tableau des votes par utilisateur
 $questionIdx = 1; // Indice pour numéroté les questions
+}
 ?>
 
 <div class="vote_header container border rounded shadow-sm p-3 my-4 mt-5">
@@ -46,7 +48,7 @@ $questionIdx = 1; // Indice pour numéroté les questions
 </div>
 
 <!-- Bloc pour les statistiques générales du scrutin -->
-<div class="stat-holder" id=<?php echo "stat-" . $ballot_id ?>>
+<div class="stat-holder <?php if(empty($ballot['questions'])) {echo "d-none";} ?>" id=<?php echo "stat-" . $ballot_id ?>>
 
     <div class="overview container my-4 px-sm-4 py-sm-4 px-3 py-3 rounded shadow-sm border ">
         <div class="row  g-3 ">
@@ -158,6 +160,17 @@ $questionIdx = 1; // Indice pour numéroté les questions
                 ?>
             </tbody>
         </table>
+    </div>
+    <!-- Bouton pour retourner à la page d'accueil -->
+    <div class="container mt-3 mb-5 p-0">
+        <button type="button" onclick="window.location.href='../home/home.php'" class="btnCancel btn shadow-sm"><i class="fa-regular fa-circle-xmark me-1"></i>Back to home</button>
+    </div>
+</div>
+
+<!-- Aucunes statistiques pour un scrutin sans questions -->
+<div class="stat-empty  <?php if(!empty($ballot['questions'])) {echo "d-none";} ?>">
+    <div class="container rounded border top-3 p-3 shadow-sm">
+        <p class="mb-0">No stats to display</p>
     </div>
     <!-- Bouton pour retourner à la page d'accueil -->
     <div class="container mt-3 mb-5 p-0">

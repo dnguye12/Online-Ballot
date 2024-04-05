@@ -24,19 +24,25 @@ $ballot = $_POST["ballot"];
     // Variable helper pour numéroter les questions.
     $helper = 1;
     // Parcours et affichage de chaque question et ses choix associés.
-    foreach ($ballot['questions'] as $question) {
-        echo "<fieldset class='container shadow-sm border rounded p-3 mt-3'>";
-        echo "<legend><b>Question $helper </b>: " . $question['title'] . "</legend>";
-        $helper++;
-        echo "<div class='d-flex flex-column'>";
+    if (!empty($ballot['questions'])) {
+        foreach ($ballot['questions'] as $question) {
+            echo "<fieldset class='container shadow-sm border rounded p-3 mt-3'>";
+            echo "<legend><b>Question $helper </b>: " . $question['title'] . "</legend>";
+            $helper++;
+            echo "<div class='d-flex flex-column'>";
 
-        // Pour chaque choix de la question, crée un bouton radio.
-        foreach ($question['choices'] as $key => $value) {
-            echo "<input type='radio' disabled id=" . $question['title'] . $key . " name=" . $question['title'] . " value='$key'>";
-            echo "<label for=" . $question['title'] . $key . " class='d-flex p-3 mb-2 border'>$key</label>";
+            // Pour chaque choix de la question, crée un bouton radio.
+            foreach ($question['choices'] as $key => $value) {
+                echo "<input type='radio' disabled id=" . $question['title'] . $key . " name=" . $question['title'] . " value='$key'>";
+                echo "<label for=" . $question['title'] . $key . " class='d-flex p-3 mb-2 border'>$key</label>";
+            }
+            echo "</div>";
+            echo "</fieldset>";
         }
+    }else {
+        echo "<div class='container shadow-sm border rounded p-3 mt-3'>";
+        echo "<p class='mb-0'> No questions to display </p>";
         echo "</div>";
-        echo "</fieldset>";
     }
     ?>
     <!-- Bouton pour retourner à la page d'accueil. -->
