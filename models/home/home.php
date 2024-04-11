@@ -92,8 +92,12 @@ usort($voter, function ($a, $b) {
 				<?php
 				// Inclut et affiche les composants des scrutins organisés
 				require_once './components/organize.php';
-				foreach ($organize as $ballot) {
-					echo OrganizeBallot($ballot);
+				if (count($organize) > 0) {
+					foreach ($organize as $ballot) {
+						echo OrganizeBallot($ballot);
+					}
+				} else {
+					echo "<p class='mt-3 mb-0'>You haven't created any ballots.</p>";
 				}
 				?>
 			</div>
@@ -107,8 +111,12 @@ usort($voter, function ($a, $b) {
 				<?php
 				// Inclut et affiche les composants des scrutins où l'utilisateur est électeur
 				require_once './components/voter.php';
-				foreach ($voter as $ballot) {
-					echo VoterBallot($ballot);
+				if (count($voter) > 0) {
+					foreach ($voter as $ballot) {
+						echo VoterBallot($ballot);
+					}
+				} else {
+					echo "<p class='mt-3 mb-0'>You are not elector for any ballot.</p>";
 				}
 				?>
 			</div>
@@ -196,7 +204,7 @@ usort($voter, function ($a, $b) {
 		})
 	})
 
- 	//Ouvrir l'interface pour transférer le vote (uniquement pour les organisateurs)
+	//Ouvrir l'interface pour transférer le vote (uniquement pour les organisateurs)
 	$(document).ready(function() {
 		$('.transfer-vote').on('click', function() {
 			let ballot = $(this).data('ballot');
@@ -280,7 +288,7 @@ usort($voter, function ($a, $b) {
 		})
 	});
 
-	
+
 	// Gestion de la soumission du formulaire de vote
 	$(document).ready(function() {
 		$('.home').on('submit', '#voteForm', function(e) {
@@ -291,7 +299,7 @@ usort($voter, function ($a, $b) {
 				// Transforme les données du formulaire en un objet structuré
 				let res = formData.split('&').reduce(function(acc, curr) {
 					let parts = curr.split('=');
-					
+
 					if (!acc.questions) {
 						acc.questions = [];
 					}
